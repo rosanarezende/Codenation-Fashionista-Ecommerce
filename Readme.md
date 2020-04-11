@@ -3,7 +3,6 @@
 O AceleraDev Frontend React é um programa de formação de profissionais da área de desenvolvimento de software, que prepara ao longo de 6 semanas estudantes e profissionais da área de tecnologia com exercícios práticos de programação focados em na realidade do mercado, além de mentorias exclusivas.
 <br><br>
 
-
 # Projeto: Fashionista E-commerce
 
 [Site do projeto]()
