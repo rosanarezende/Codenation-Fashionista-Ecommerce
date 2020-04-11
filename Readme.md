@@ -22,9 +22,7 @@ O AceleraDev Frontend React é um programa de formação de profissionais da ár
     <img alt="Repository issues" src="https://img.shields.io/github/issues/rosanarezende/Codenation-Fashionista-Ecommerce">
   </a>
 </p>
-<br>
-
-<br>
+<br><br>
 
 ## Cenário
 Segundo o levantamento, da Webshoppers (Ebit / Nielsen), os e-commerces brasileiros faturaram cerca de R$ 53,2 bilhões em 2018. O segmento “Moda e Acessórios” representa 5,6% do faturamento no varejo online, ocupando a segunda posição entre as categorias de produtos com mais pedidos, perdendo apenas para o segmento de eletroeletrônicos.
