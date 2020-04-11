@@ -8,8 +8,6 @@ function ProductInCart(props){
         alert(`Remover produto ${productId}`)
     }
 
-    const productValueParcel = (product.value / 3 ).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
-
     return(
         <S.ProductInCartWrapper>
             
