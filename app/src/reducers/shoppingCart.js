@@ -1,5 +1,5 @@
 const initialState = {
-    shoppingCartAppears: false,
+    shoppingCartAppears: true,
 }
 
 const shoppingCart = (state = initialState, action) => {

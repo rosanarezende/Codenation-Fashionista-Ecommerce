@@ -6,6 +6,9 @@ export const ProductCard = styled.div`
     display: flex;
     flex-direction: column;
     text-align: center;
+    :hover{
+        cursor: pointer;
+    }
 
     @media screen and (max-width: 1200px) {
         width: 40vw;

@@ -5,10 +5,10 @@ import { setShoppingCart } from '../../actions/shoppingCart'
 import { HeaderWrapper, IconLink } from './styles.js'
 
 function Header(props) {
-  const {setShoppingCart, shoppingCartAppears} = props
+  const {setShoppingCart } = props
 
   const shoppingCartAppearsDisappears = () => {
-    setShoppingCart(!shoppingCartAppears)
+    setShoppingCart(true)
   }
 
   return (
@@ -27,12 +27,8 @@ function Header(props) {
   );
 }
 
-const mapStateToProps = (state) => ({
-  shoppingCartAppears: state.shoppingCart.shoppingCartAppears
-})
-
 const mapDispatchToProps = dispatch => ({
   setShoppingCart: (appears) => dispatch(setShoppingCart(appears))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(null, mapDispatchToProps)(Header);

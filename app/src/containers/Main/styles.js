@@ -19,9 +19,4 @@ export const Quantity = styled.p`
 export const ProductsGrid = styled.div`
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-
-    :hover{
-        cursor: pointer;
-    }
 `
