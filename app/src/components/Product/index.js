@@ -10,7 +10,7 @@ function Product(props) {
     }
 
     return (
-        <S.ProductCard key={product.name} onClick={() => openProductDetail(product.name)}>
+        <S.ProductCard onClick={() => openProductDetail(product.name)}>
             <S.Image src={product.image} alt={product.name} />
             <div>
                 <h3>{product.name.toUpperCase()}</h3>

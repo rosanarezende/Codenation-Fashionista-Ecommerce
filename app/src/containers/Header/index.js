@@ -8,10 +8,10 @@ function Header() {
 
       <div>
           <IconLink href='#'>
-            <i class="fa fa-search" aria-hidden="true"></i>
+            <i className="fa fa-search" aria-hidden="true"></i>
           </IconLink>
           <IconLink href='#'>
-            <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            <i className="fa fa-shopping-bag" aria-hidden="true"></i>
           </IconLink>
       </div>
     </HeaderWrapper>
