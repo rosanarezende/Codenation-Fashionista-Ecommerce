@@ -7,7 +7,7 @@ import Backdrop from '../../components/Backdrop';
 import ShoppingCart from '../../components/ShoppingCart/index.js';
 import Search from '../../components/Search';
 
-function Ecommerce(props) {
+function HomePage(props) {
 
     const { shoppingCartAppears, searchAppears } = props
 
@@ -38,4 +38,4 @@ const mapStateToProps = (state) => ({
     searchAppears: state.search.searchAppears
 })
 
-export default connect(mapStateToProps)(Ecommerce);
+export default connect(mapStateToProps)(HomePage);
