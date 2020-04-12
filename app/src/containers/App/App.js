@@ -1,16 +1,24 @@
 import React from 'react';
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
-import rootReducer from '../../reducers'
+import { createStore, applyMiddleware } from 'redux'
+import { createBrowserHistory } from 'history'
+import { routerMiddleware } from 'connected-react-router'
 
-import Ecommerce from '../Ecommerce';
+import { generateReducers } from '../../reducers'
 
-const store = createStore(rootReducer)
+import Router from '../Router';
+
+const history = createBrowserHistory()
+
+const store = createStore(
+  generateReducers(history),
+  applyMiddleware(routerMiddleware(history))
+)
 
 function App() {
   return (
     <Provider store={store}>
-      <Ecommerce/>
+      <Router history={history}/>
     </Provider>
   );
 }
