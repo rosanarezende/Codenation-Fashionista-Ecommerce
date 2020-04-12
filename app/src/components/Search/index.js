@@ -7,12 +7,12 @@ import { setSearch } from '../../actions/search'
 import ProductInSearch from '../ProductInSearch'
 
 function Search(props) {
-    const { setSearch, allItensInShoppingCart } = props
+    const { setSearch, allProducts } = props
     const [inputSearch, setInputSearch] = useState('')
 
     let filteredItens = []
     if (inputSearch !== '') {
-        filteredItens = allItensInShoppingCart.filter(product =>
+        filteredItens = allProducts.filter(product =>
             product.name.toLowerCase().includes(inputSearch.toLowerCase())
         )
     }
@@ -55,9 +55,7 @@ function Search(props) {
                     {filteredItens.map(product => (
                         <ProductInSearch key={product.id} product={product} />
                     ))}
-
                 </S.Container>
-
             </S.SearchFooter>
 
         </S.SearchWrapper>
@@ -65,7 +63,7 @@ function Search(props) {
 }
 
 const mapStateToProps = (state) => ({
-    allItensInShoppingCart: state.shoppingCart.allItensInShoppingCart,
+    allProducts: state.products.allProducts
 })
 
 const mapDispatchToProps = dispatch => ({
