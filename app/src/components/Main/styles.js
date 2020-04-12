@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
-export const MainWrapper = styled.div`
+export const MainWrapper = styled.main`
     display: flex;
     background-color: #f9f9f9;
-    min-height: 92vh;
+    margin-top: 5vh;
     padding: 0 2rem;
     @media screen and (max-width: 1200px) {
         font-size: 70%;

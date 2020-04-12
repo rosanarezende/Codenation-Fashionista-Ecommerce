@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import Header from '../../components/Header';
 import Main from '../../components/Main';
 import ShoppingCart from '../../components/ShoppingCart/index.js';
+import Backdrop from '../../components/Backdrop';
+
 
 function Ecommerce(props) {
 
@@ -13,7 +15,12 @@ function Ecommerce(props) {
         <>
             <Header />
             <Main />
-            {shoppingCartAppears && <ShoppingCart />}
+            {shoppingCartAppears &&
+                <>
+                    <Backdrop/>
+                    <ShoppingCart />
+                </>
+            }
         </>
     );
 }
