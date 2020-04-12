@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import * as S from './styles.js'
 
-import Product from '../../components/Product/index.js';
+import Product from '../Product';
 
 function Main(props) {
 

@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import Header from '../Header';
-import Main from '../Main';
+import Header from '../../components/Header';
+import Main from '../../components/Main';
 import ShoppingCart from '../../components/ShoppingCart/index.js';
 
 import * as S from './styles'
