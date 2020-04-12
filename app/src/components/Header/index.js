@@ -2,13 +2,18 @@ import React from 'react';
 import { connect } from 'react-redux'
 
 import { setShoppingCart } from '../../actions/shoppingCart'
+import { setSearch } from '../../actions/search'
+
 import * as S from './styles.js'
 
 function Header(props) {
-  const {setShoppingCart, allItensInShoppingCart } = props
+  const {setShoppingCart, setSearch, allItensInShoppingCart } = props
 
   const shoppingCartAppearsDisappears = () => {
     setShoppingCart(true)
+  }
+  const searchAppearsDisappears = () => {
+    setSearch(true)
   }
 
   return (
@@ -17,7 +22,7 @@ function Header(props) {
         <h1>FASHONISTA</h1>
 
         <div>
-            <S.IconSearch href='#'>
+            <S.IconSearch href='#' onClick={searchAppearsDisappears}>
               <i className="fa fa-search" aria-hidden="true"></i>
             </S.IconSearch>
             <S.IconCart href='#' onClick={shoppingCartAppearsDisappears}>
@@ -35,7 +40,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  setShoppingCart: (appears) => dispatch(setShoppingCart(appears))
+  setShoppingCart: (appears) => dispatch(setShoppingCart(appears)),
+  setSearch: (appears) => dispatch(setSearch(appears))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

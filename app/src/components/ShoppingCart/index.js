@@ -32,9 +32,12 @@ function ShoppingCart(props) {
 
             <S.ShoppingCartMain>
 
-                {allItensInShoppingCart.map(product => (
-                    <ProductInCart key={product.id} product={product} />
-                ))}
+                <S.MainContainer>
+                    {allItensInShoppingCart.map(product => (
+                        <ProductInCart key={product.id} product={product} />
+                    ))}
+
+                </S.MainContainer>
 
             </S.ShoppingCartMain>
 
