@@ -3,13 +3,13 @@ import { connect } from 'react-redux'
 
 import Header from '../../components/Header';
 import Main from '../../components/Main';
-import ShoppingCart from '../../components/ShoppingCart/index.js';
 import Backdrop from '../../components/Backdrop';
-
+import ShoppingCart from '../../components/ShoppingCart/index.js';
+import Search from '../../components/Search';
 
 function Ecommerce(props) {
 
-    const { shoppingCartAppears } = props
+    const { shoppingCartAppears, searchAppears } = props
 
     return (
         <>
@@ -21,12 +21,21 @@ function Ecommerce(props) {
                     <ShoppingCart />
                 </>
             }
+
+            { searchAppears &&
+                <>
+                    <Backdrop/>
+                    <Search/>
+                </>
+            }
+
         </>
     );
 }
 
 const mapStateToProps = (state) => ({
-    shoppingCartAppears: state.shoppingCart.shoppingCartAppears
+    shoppingCartAppears: state.shoppingCart.shoppingCartAppears,
+    searchAppears: state.search.searchAppears
 })
 
 export default connect(mapStateToProps)(Ecommerce);
