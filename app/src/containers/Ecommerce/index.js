@@ -5,6 +5,8 @@ import Header from '../../components/Header';
 import Main from '../../components/Main';
 import ShoppingCart from '../../components/ShoppingCart/index.js';
 
+import * as S from './styles'
+
 function Ecommerce(props) {
 
     const { shoppingCartAppears } = props
@@ -13,7 +15,11 @@ function Ecommerce(props) {
         <>
             <Header />
             <Main />
-            {shoppingCartAppears && <ShoppingCart />}
+            {shoppingCartAppears &&
+                <S.DarkPage>
+                    <ShoppingCart />
+                </S.DarkPage>
+            }
         </>
     );
 }
