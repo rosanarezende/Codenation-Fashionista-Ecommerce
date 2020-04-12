@@ -13,17 +13,19 @@ function Header(props) {
 
   return (
     <S.HeaderWrapper>
-      <h1>FASHONISTA</h1>
+      <S.HeaderNavbar>
+        <h1>FASHONISTA</h1>
 
-      <div>
-          <S.IconSearch href='#'>
-            <i className="fa fa-search" aria-hidden="true"></i>
-          </S.IconSearch>
-          <S.IconCart href='#' onClick={shoppingCartAppearsDisappears}>
-            <i className="fa fa-shopping-basket" aria-hidden="true"></i>
-            <S.Badge>{allItensInShoppingCart.length}</S.Badge>
-          </S.IconCart>
-      </div>
+        <div>
+            <S.IconSearch href='#'>
+              <i className="fa fa-search" aria-hidden="true"></i>
+            </S.IconSearch>
+            <S.IconCart href='#' onClick={shoppingCartAppearsDisappears}>
+              <i className="fa fa-shopping-basket" aria-hidden="true"></i>
+              <S.Badge>{allItensInShoppingCart.length}</S.Badge>
+            </S.IconCart>
+        </div>
+      </S.HeaderNavbar>
     </S.HeaderWrapper>
   );
 }
