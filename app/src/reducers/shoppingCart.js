@@ -41,14 +41,6 @@ const initialState = {
             size: 40,
             quantity: 1
         },
-        {
-            id: 6,
-            image: "https://user-images.githubusercontent.com/45580434/79032517-98a06b80-7b7d-11ea-81a6-b4fe410cc400.png",
-            name: "Top Croped Suede",
-            value: 129.9,
-            size: 40,
-            quantity: 2
-        },
     ],
 }
 
