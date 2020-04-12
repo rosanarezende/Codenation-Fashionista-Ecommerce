@@ -5,6 +5,9 @@ export const MainWrapper = styled.div`
     background-color: #f9f9f9;
     min-height: 92vh;
     padding: 0 2rem;
+    @media screen and (max-width: 1200px) {
+        font-size: 70%;
+    }
 `
 
 export const ProductsContent = styled.div`
@@ -13,7 +16,7 @@ export const ProductsContent = styled.div`
 `
 
 export const Quantity = styled.p`
-    margin: 1rem;
+    margin: 1rem 0;
 `
 
 export const ProductsGrid = styled.div`

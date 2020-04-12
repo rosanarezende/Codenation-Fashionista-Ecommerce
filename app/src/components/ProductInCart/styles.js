@@ -18,8 +18,12 @@ export const InternalDivisionLeft = styled.div`
 export const InternalDivisionCenter = styled.div`
     display: flex;
     flex-direction: column;
-    width: 60%;
+    width: 50%;
     margin: 0 1rem;
+    @media screen and (max-width: 1200px) {
+        width: 60%;
+        margin: 0 0.5rem;
+    }
 `
 
 export const InternalDivisionRigth = styled.div`
@@ -38,7 +42,7 @@ export const Remove = styled.p`
     align-self: center;
 `
 
-export const Quantity = styled.div`
+export const QuantityContainer = styled.div`
     display: flex;
     margin-top: 0.5rem;
 `
@@ -47,11 +51,21 @@ export const Button = styled.button`
     background-color: transparent;
     border: 1px solid black;
     width: 25px;
+`
+
+export const Quantity = styled.span`
     margin: 0 0.5rem;
+    @media screen and (max-width: 1200px) {
+        margin: 0 0.3rem;
+    }
 `
 
 export const TextGrey = styled.p`
     color: grey;
     font-size: 0.8rem;
     margin: 0.5rem 0;
+
+    @media screen and (max-width: 1200px) {
+        font-size: 0.6rem;
+    }
 `

@@ -50,7 +50,7 @@ function ShoppingCart(props) {
 
             <S.ShoppingCartHeader>
                 <S.IconLink href='#' onClick={shoppingCartAppearsDisappears}>
-                    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                    <i className="fa fa-arrow-right" aria-hidden="true"></i>
                 </S.IconLink>
                 
                 <h4>Sacola ({listShoopingCart.length}) </h4>

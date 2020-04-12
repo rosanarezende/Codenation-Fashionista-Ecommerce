@@ -22,15 +22,15 @@ function ProductInCart(props){
                 <h3>{product.name.toUpperCase()}</h3>
                 <S.TextGrey>Tam: {product.size}</S.TextGrey>
 
-                <S.Quantity>
+                <S.QuantityContainer>
                     <S.Button>
-                        <i class="fa fa-minus" aria-hidden="true"></i>
+                        <i className="fa fa-minus" aria-hidden="true"></i>
                     </S.Button>
-                    {product.quantity}
+                    <S.Quantity>{product.quantity}</S.Quantity>
                     <S.Button>
-                        <i class="fa fa-plus" aria-hidden="true"></i>
+                        <i className="fa fa-plus" aria-hidden="true"></i>
                     </S.Button>
-                </S.Quantity>
+                </S.QuantityContainer>
                 
             </S.InternalDivisionCenter>
 

@@ -6,6 +6,9 @@ export const HeaderWrapper = styled.div`
     padding: 0 1rem;
     align-items: center;
     height: 5vh;
+    @media screen and (max-width: 1200px) {
+        font-size: 80%;
+    }
 `
 
 export const IconLink = styled.a`

@@ -13,7 +13,7 @@ export const ShoppingCartWrapper = styled.div`
     box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
 
     @media screen and (max-width: 1200px) {
-        width: 70vw;
+        width: 75vw;
     }
 `
 
@@ -37,11 +37,15 @@ export const IconLink = styled.a`
 `
 
 export const ShoppingCartMain = styled.main`
-    background-color: #bababa;
+    background-color: #f9f9f9;
     height: 90vh;
     display: flex;
     flex-direction: column;
     padding: 1rem;
+    padding-right: 2rem;
+    @media screen and (max-width: 1200px) {
+        font-size: 0.7rem;
+    }
 `
 
 export const ShoppingCartFooter = styled.footer`
