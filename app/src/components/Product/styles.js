@@ -19,7 +19,6 @@ export const ProductCard = styled.div`
 
 export const Image = styled.img`
     width: 100%;
-    
 `
 
 export const Stamp = styled.div`

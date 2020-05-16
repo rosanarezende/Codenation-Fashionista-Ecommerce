@@ -1,13 +1,18 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { connect } from 'react-redux'
+
+import { getProducts } from '../../actions/products'
 
 import * as S from './styles.js'
 
 import Product from '../Product';
 
 function Main(props) {
-
-    const { allProducts } = props
+    const { allProducts, getProducts } = props
+    
+    useEffect(() => {
+        getProducts()
+    }, [getProducts])
 
     return (
         <S.MainWrapper>         
@@ -18,11 +23,15 @@ function Main(props) {
                     {allProducts.length} itens
                 </S.Quantity>
 
-                <S.ProductsGrid>
-                    {allProducts.map(product => (
-                        <Product product={product} key={product.id} />
-                    ))}
-                </S.ProductsGrid>
+                {allProducts.length === 0
+                    ? <div>Carregando...</div>
+                    :
+                    <S.ProductsGrid>
+                        {allProducts.map( (product, index) => (
+                            <Product product={product} key={index} />
+                        ))}
+                    </S.ProductsGrid>
+                }               
 
             </S.ProductsContent>
 
@@ -34,4 +43,8 @@ const mapStateToProps = (state) => ({
     allProducts: state.products.allProducts,
 })
 
-export default connect(mapStateToProps)(Main);
+const mapDispatchToProps = dispatch => ({
+    getProducts: () => dispatch(getProducts())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
