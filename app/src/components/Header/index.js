@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import { push } from 'connected-react-router'
+import { routes } from "../../utils/constants"
 
 import { setShoppingCart } from '../../actions/shoppingCart'
 import { setSearch } from '../../actions/search'
@@ -7,7 +9,7 @@ import { setSearch } from '../../actions/search'
 import * as S from './styles.js'
 
 function Header(props) {
-  const {setShoppingCart, setSearch, allItensInShoppingCart } = props
+  const {setShoppingCart, setSearch, allItensInShoppingCart, goToHome } = props
 
   const shoppingCartAppearsDisappears = () => {
     setShoppingCart(true)
@@ -19,7 +21,9 @@ function Header(props) {
   return (
     <S.HeaderWrapper>
       <S.HeaderNavbar>
-        <h1>FASHONISTA</h1>
+        <h1
+          onClick={() => goToHome()}
+        >FASHONISTA</h1>
 
         <div>
             <S.IconSearch href='#' onClick={searchAppearsDisappears}>
@@ -41,7 +45,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = dispatch => ({
   setShoppingCart: (appears) => dispatch(setShoppingCart(appears)),
-  setSearch: (appears) => dispatch(setSearch(appears))
+  setSearch: (appears) => dispatch(setSearch(appears)),
+  goToHome: () => dispatch(push(routes.home))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
