@@ -8,6 +8,7 @@ import ProductInSearch from '../ProductInSearch'
 
 function Search(props) {
     const { setSearch, allProducts } = props
+    console.log(allProducts)
     const [inputSearch, setInputSearch] = useState('')
 
     let filteredItens = []
@@ -48,9 +49,16 @@ function Search(props) {
 
             <S.SearchFooter>
                 <S.Container>
-                    <S.Quantity>
-                        {filteredItens.length} itens
-                    </S.Quantity>
+                    {filteredItens.length === 0
+                        ?
+                        <S.Quantity>
+                            Nenhum item encontrado
+                        </S.Quantity>
+                        :
+                        <S.Quantity>
+                            {filteredItens.length} itens
+                        </S.Quantity>
+                    }
 
                     {filteredItens.map(product => (
                         <ProductInSearch key={product.id} product={product} />

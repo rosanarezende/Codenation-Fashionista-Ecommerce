@@ -8,7 +8,10 @@ function ProductInSearch(props){
         <S.ProductInSearchWrapper>
             
             <S.InternalDivisionLeft>
-                <S.Image src={product.image} alt={product.name}/>
+                {product.image !== ""
+                    ? <S.Image src={product.image} alt={product.name} />
+                    : <S.Image src="https://via.placeholder.com/470x594/FFFFFF/?text=Imagem+Indispon%C3%ADvel" alt={product.name} />
+                }
             </S.InternalDivisionLeft>
 
             <S.InternalDivisionCenter>
@@ -16,8 +19,8 @@ function ProductInSearch(props){
             </S.InternalDivisionCenter>
 
             <S.InternalDivisionRigth>
-                <h3>{product.value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</h3>
-                <S.TextGrey> 3x {(product.value / 3).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</S.TextGrey>
+                <h3>{product.regular_price}</h3>
+                <S.TextGrey>{product.installments}</S.TextGrey>
             </S.InternalDivisionRigth>
             
         </S.ProductInSearchWrapper>

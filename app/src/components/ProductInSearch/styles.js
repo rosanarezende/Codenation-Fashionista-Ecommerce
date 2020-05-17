@@ -13,15 +13,14 @@ export const ProductInSearchWrapper = styled.div`
 export const InternalDivisionLeft = styled.div`
     display: flex;
     flex-direction: column;
+    width: 40%;
 `
 
 export const InternalDivisionCenter = styled.div`
     display: flex;
     flex-direction: column;
-    width: 50%;
     margin: 0 1rem;
     @media screen and (max-width: 1200px) {
-        width: 60%;
         margin: 0 0.5rem;
     }
 `
@@ -30,6 +29,7 @@ export const InternalDivisionRigth = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    width: 40%;
 `
 
 export const Image = styled.img`
@@ -39,7 +39,7 @@ export const Image = styled.img`
 export const TextGrey = styled.p`
     color: grey;
     font-size: 0.8rem;
-    margin: 0.5rem 0;
+    margin-top: 0.3rem;
 
     @media screen and (max-width: 1200px) {
         font-size: 0.6rem;
