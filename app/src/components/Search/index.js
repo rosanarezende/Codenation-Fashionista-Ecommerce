@@ -8,7 +8,7 @@ import ProductInSearch from '../ProductInSearch'
 
 function Search(props) {
     const { setSearch, allProducts } = props
-    console.log(allProducts)
+
     const [inputSearch, setInputSearch] = useState('')
 
     let filteredItens = []
