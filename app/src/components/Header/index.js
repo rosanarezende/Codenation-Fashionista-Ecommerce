@@ -1,15 +1,24 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { connect } from 'react-redux'
 import { push } from 'connected-react-router'
 import { routes } from "../../utils/constants"
 
-import { setShoppingCart } from '../../actions/shoppingCart'
+import { setShoppingCart, setAllItensInShoppingCart } from '../../actions/shoppingCart'
 import { setSearch } from '../../actions/search'
+
 
 import * as S from './styles.js'
 
 function Header(props) {
-  const {setShoppingCart, setSearch, allItensInShoppingCart, goToHome } = props
+  const {setShoppingCart, setSearch, allItensInShoppingCart, goToHome, setAllItensInShoppingCart } = props
+
+  useEffect(() => {   
+      const noEstadodoCarrinho = localStorage.getItem('carrinho')
+      const novoEstado = JSON.parse(noEstadodoCarrinho)
+      if (novoEstado) {
+        setAllItensInShoppingCart(novoEstado)
+      }
+  }, [setAllItensInShoppingCart])
 
   const shoppingCartAppearsDisappears = () => {
     setShoppingCart(true)
@@ -46,7 +55,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = dispatch => ({
   setShoppingCart: (appears) => dispatch(setShoppingCart(appears)),
   setSearch: (appears) => dispatch(setSearch(appears)),
-  goToHome: () => dispatch(push(routes.home))
+  goToHome: () => dispatch(push(routes.home)),
+  setAllItensInShoppingCart: (products) => dispatch(setAllItensInShoppingCart(products))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

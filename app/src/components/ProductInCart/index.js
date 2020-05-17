@@ -1,47 +1,79 @@
 import React from 'react'
+
 import * as S from './styles'
 
-function ProductInCart(props){
-    const { product } = props
+function ProductInCart(props) {
+	const { product, removeProductFromCart, changeQuantity } = props
 
-    const removeItem = (productId) => {
-        alert(`Remover produto ${productId}`)
-    }
+	const removeItem = (productId) => {
+		removeProductFromCart(productId)
+	}
 
-    return(
-        <S.ProductInCartWrapper>
-            
-            <S.InternalDivisionLeft>
+	function onClickRemoveQuantity(productId) {
+		const information = {
+			id: productId,
+			option: "remove"
+		}
+		changeQuantity(information)
+	}
 
-                <S.Image src={product.image} alt={product.name}/>
-                <S.Remove onClick={() => removeItem(product.id)}>Remover item</S.Remove>
+	function onClickAddQuantity(productId) {
+		const information = {
+			id: productId,
+			option: "add"
+		}
+		changeQuantity(information)
+	}
 
-            </S.InternalDivisionLeft>
+	return (
+		<S.ProductInCartWrapper>
 
-            <S.InternalDivisionCenter>
-                <h3>{product.name.toUpperCase()}</h3>
-                <S.TextGrey>Tam: {product.size}</S.TextGrey>
+			<S.InternalDivisionLeft>
 
-                <S.QuantityContainer>
-                    <S.Button>
-                        <i className="fa fa-minus" aria-hidden="true"></i>
-                    </S.Button>
-                    <S.Quantity>{product.quantity}</S.Quantity>
-                    <S.Button>
-                        <i className="fa fa-plus" aria-hidden="true"></i>
-                    </S.Button>
-                </S.QuantityContainer>
-                
-            </S.InternalDivisionCenter>
+				{product.image
+					?
+					<S.Image src={product.image} alt={product.name} />
+					:
+					<S.Image src="https://via.placeholder.com/470x594/FFFFFF/?text=Imagem+Indispon%C3%ADvel" alt={product.name} />
+				}
 
-            <S.InternalDivisionRigth>
-                <h3>{product.value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</h3>
-                <S.TextGrey> 3x {(product.value / 3).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</S.TextGrey>
-                
-            </S.InternalDivisionRigth>
-            
-        </S.ProductInCartWrapper>
-    )
+				<S.Remove onClick={() => removeItem(product.id)}>Remover item</S.Remove>
+
+			</S.InternalDivisionLeft>
+
+			<S.InternalDivisionCenter>
+				<h3>{product.name.toUpperCase()}</h3>
+				<S.TextGrey>Tam: {product.size}</S.TextGrey>
+
+				<S.QuantityContainer>
+					{product.quantity === 1
+						?
+						<S.Button>
+							<i className="fa fa-minus" aria-hidden="true"></i>
+						</S.Button>
+						:
+						<S.Button onClick={() => onClickRemoveQuantity(product.id)}>
+							<i className="fa fa-minus" aria-hidden="true"></i>
+						</S.Button>
+					}
+					
+					<S.Quantity>{product.quantity}</S.Quantity>
+					
+					<S.Button onClick={() => onClickAddQuantity(product.id)}>
+						<i className="fa fa-plus" aria-hidden="true"></i>
+					</S.Button>
+				</S.QuantityContainer>
+
+			</S.InternalDivisionCenter>
+
+			<S.InternalDivisionRigth>
+				<h3>{product.actual_price}</h3>
+				<S.TextGrey>{product.installments}</S.TextGrey>
+
+			</S.InternalDivisionRigth>
+
+		</S.ProductInCartWrapper>
+	)
 }
 
 export default ProductInCart

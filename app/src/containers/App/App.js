@@ -19,7 +19,7 @@ const store = createStore(
 function App() {
   return (
     <Provider store={store}>
-      <Router history={history}/>
+      <Router history={history} />
     </Provider>
   );
 }
