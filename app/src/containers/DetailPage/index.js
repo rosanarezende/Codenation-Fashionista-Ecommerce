@@ -3,9 +3,12 @@ import { connect } from 'react-redux'
 
 import * as S from './styles'
 import Header from '../../components/Header'
+import Backdrop from '../../components/Backdrop'
+import ShoppingCart from '../../components/ShoppingCart'
+import Search from '../../components/Search'
 
 function DetailPage(props) {
-    const { product } = props
+    const { product, shoppingCartAppears, searchAppears } = props
 
     return (
         <>
@@ -31,12 +34,28 @@ function DetailPage(props) {
                     </span>
                 </div>
             </S.DetailPageWrapper>
+
+            {shoppingCartAppears &&
+                <>
+                    <Backdrop/>
+                    <ShoppingCart />
+                </>
+            }
+
+            { searchAppears &&
+                <>
+                    <Backdrop/>
+                    <Search/>
+                </>
+            }
         </>
     )
 }
 
 const mapStateToProps = state => ({
-    product: state.products.productDetail
+    product: state.products.productDetail,
+    shoppingCartAppears: state.shoppingCart.shoppingCartAppears,
+    searchAppears: state.search.searchAppears
 })
 
 export default connect(mapStateToProps)(DetailPage)
