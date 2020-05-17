@@ -11,28 +11,20 @@ export const DetailPageWrapper = styled.div`
 `
 
 export const ImageCard = styled.div`
-    height: 85vh;
+    width: 30vw;
     margin-right: 2rem;
     display: flex;
-    /* flex-direction: column;
-    text-align: center; */
     overflow: hidden;
-    /* position: relative;
-    :hover{
-        cursor: pointer;
-    } */
+    position: relative;
 
     @media screen and (max-width: 1200px) {
         margin-bottom: 1rem;
-        height: 50vh;
+        width: 80vw;
     }
 `
 
 export const Image = styled.img`
-    height: 85vh;
-    @media screen and (max-width: 1200px) {
-        height: 100%;
-    }
+    width: 100%;
 `
 
 export const Stamp = styled.div`
@@ -44,6 +36,38 @@ export const Stamp = styled.div`
     background-color: black;
     color: white;
     padding: 0.2rem 0.5rem;
+`
+
+export const TextWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+`
+
+export const BeforePrice = styled.span`
+    margin-right: 0.5rem;
+    color: grey;
+    text-decoration: line-through;
+`
+
+export const Installments = styled.span`
+    color: grey;
+    font-size: 0.8em;
+    font-weight: bold;
+`
+
+export const SizeWrapper = styled.div`
+    margin: 0.5rem 0;
+`
+
+export const TitleGrey = styled.p`
+    color: grey;
+    margin-bottom: 0.5rem;
+`
+
+export const SecretText = styled.p`
+    margin-bottom: 0.5rem;
+    color: red;
+    font-size: 0.8em;
 `
 
 export const SizeButton = styled.button`
