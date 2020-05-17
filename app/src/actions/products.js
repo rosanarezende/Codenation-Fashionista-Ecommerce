@@ -25,3 +25,10 @@ export const setProductDetail = product => ({
         product
     }
 })
+
+export const setSelectedSize = size => ({
+    type: "SET_SELECTED_SIZE",
+    payload: {
+        size
+    }
+})

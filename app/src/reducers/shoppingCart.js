@@ -1,57 +1,49 @@
 const initialState = {
     shoppingCartAppears: false,
     allItensInShoppingCart: [
-        {
-            id: 1,
-            image: "https://user-images.githubusercontent.com/45580434/79032512-93dbb780-7b7d-11ea-90e0-660875a7e39e.png",
-            name: "Vestido Transpasse Bow",
-            value: 199.9,
-            size: 40,
-            quantity: 1
-        },
-        {
-            id: 2,
-            image: "https://user-images.githubusercontent.com/45580434/79032515-96d6a800-7b7d-11ea-8165-4eccc412c144.png",
-            name: "Regata Alcinha Folk",
-            value: 99.9,
-            size: 40,
-            quantity: 1
-        },
-        {
-            id: 3,
-            image: "https://user-images.githubusercontent.com/45580434/79032517-98a06b80-7b7d-11ea-81a6-b4fe410cc400.png",
-            name: "Top Croped Suede",
-            value: 129.9,
-            size: 40,
-            quantity: 2
-        },
-        {
-            id: 4,
-            image: "https://user-images.githubusercontent.com/45580434/79032512-93dbb780-7b7d-11ea-90e0-660875a7e39e.png",
-            name: "Vestido Transpasse Bow",
-            value: 199.9,
-            size: 40,
-            quantity: 1
-        },
-        {
-            id: 5,
-            image: "https://user-images.githubusercontent.com/45580434/79032515-96d6a800-7b7d-11ea-8165-4eccc412c144.png",
-            name: "Regata Alcinha Folk",
-            value: 99.9,
-            size: 40,
-            quantity: 1
-        },
+        // {
+        //     id: 1,
+        //     image: "",
+        // 	name: "T-SHIRT LEATHER DULL",
+        // 	actual_price: "R$ 149,90",
+        // 	installments: "3x R$ 49,97",
+        // 	size: "GG",
+        // 	quantity: 1
+        // },
+        // {
+        //     id: 2,
+        //     image: "https://viniciusvinna.netlify.app/assets/api-fashionista/20002581_614_catalog_1.jpg",
+        // 	name: "BATA DECOTE FLUID",
+        // 	actual_price: "R$ 79,00",
+        // 	installments: "3x R$ 39,97",
+        // 	size: "P",
+        // 	quantity: 2
+        // },
     ],
 }
 
 const shoppingCart = (state = initialState, action) => {
 
-    switch(action.type) {
+    switch (action.type) {
 
         case 'SET_SHOPPING_CART':
             return {
                 ...state,
                 shoppingCartAppears: action.payload.appears
+            }
+
+        case 'SET_ALL_INTENS_IN_SHOPPING_CART':
+            return {
+                ...state,
+                allItensInShoppingCart: action.payload.products
+            }
+
+        case 'ADD_PRODUCT_TO_CART':
+            const copyAllItensInShoppingCart = [...state.allItensInShoppingCart]
+            copyAllItensInShoppingCart.push(action.payload.product)
+            return {
+                ...state,
+                allItensInShoppingCart: copyAllItensInShoppingCart
             }
 
         default:

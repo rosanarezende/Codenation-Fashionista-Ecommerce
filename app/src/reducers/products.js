@@ -1,6 +1,7 @@
 const initialState = {
     allProducts: [],
-    productDetail: ""
+    productDetail: "",
+    selectedSize: ""
 }
 
 const products = (state = initialState, action) => {
@@ -17,6 +18,12 @@ const products = (state = initialState, action) => {
             return {
                 ...state,
                 productDetail: action.payload.product
+            }
+
+        case 'SET_SELECTED_SIZE':
+            return {
+                ...state,
+                selectedSize: action.payload.size
             }
 
         default:

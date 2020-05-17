@@ -2,59 +2,78 @@ import React from 'react'
 import { connect } from 'react-redux'
 import * as S from './styles'
 
-import { setShoppingCart } from '../../actions/shoppingCart'
+import { setShoppingCart, setAllItensInShoppingCart } from '../../actions/shoppingCart'
 
 import ProductInCart from '../ProductInCart'
 
-function ShoppingCart(props) {
+class ShoppingCart extends React.Component {
 
-    const { setShoppingCart, allItensInShoppingCart } = props
+	componentDidMount() {
+		const noEstadodoCarrinho = localStorage.getItem('carrinho')
+		const novoEstado = JSON.parse(noEstadodoCarrinho)
+		if (novoEstado) {
+			this.props.setAllItensInShoppingCart(novoEstado)
+		}
+	}
 
-    const shoppingCartAppearsDisappears = () => {
-        setShoppingCart(false)
-    }
-   
-    const subtotal = allItensInShoppingCart.reduce( (prevVal, product) => 
-        prevVal + (product.value * product.quantity), 0
-    )
+	// // acho que preciso manter por conta do remover
+	// componentDidUpdate() {
+	// 	const estadoComoString = JSON.stringify(this.props.allItensInShoppingCart)
+	// 	localStorage.setItem('carrinho', estadoComoString)
+	// }
 
-    return (
-        <S.ShoppingCartWrapper>
 
-            <S.ShoppingCartHeader>
-                <S.IconLink href='#' onClick={shoppingCartAppearsDisappears}>
-                    <i className="fa fa-arrow-right" aria-hidden="true"></i>
-                </S.IconLink>
-                
-                <h4>Sacola ({allItensInShoppingCart.length}) </h4>
-                <div></div>
-            </S.ShoppingCartHeader>
+	render() {
+		const { setShoppingCart, allItensInShoppingCart } = this.props
 
-            <S.ShoppingCartMain>
+		const shoppingCartAppearsDisappears = () => {
+			setShoppingCart(false)
+		}
 
-                <S.MainContainer>
-                    {allItensInShoppingCart.map(product => (
-                        <ProductInCart key={product.id} product={product} />
-                    ))}
+		const subtotal = allItensInShoppingCart.reduce((prevVal, product) => {
+			const formattedValue = product.actual_price.toString().substr(3).replace(",", ".")
+			return prevVal + (formattedValue * product.quantity)
+		}, 0)
 
-                </S.MainContainer>
+		return (
+			<S.ShoppingCartWrapper>
 
-            </S.ShoppingCartMain>
+				<S.ShoppingCartHeader>
+					<S.IconLink href='#' onClick={shoppingCartAppearsDisappears}>
+						<i className="fa fa-arrow-right" aria-hidden="true"></i>
+					</S.IconLink>
 
-            <S.ShoppingCartFooter>
-                <h4>Subtotal - {subtotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</h4>
-            </S.ShoppingCartFooter>
+					<h4>Sacola ({allItensInShoppingCart.length}) </h4>
+					<div></div>
+				</S.ShoppingCartHeader>
 
-        </S.ShoppingCartWrapper>
-    )
+				<S.ShoppingCartMain>
+
+					<S.MainContainer>
+						{allItensInShoppingCart.map((product, index) => (
+							<ProductInCart key={index} product={product} />
+						))}
+
+					</S.MainContainer>
+
+				</S.ShoppingCartMain>
+
+				<S.ShoppingCartFooter>
+					<h4>Subtotal - {subtotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</h4>
+				</S.ShoppingCartFooter>
+
+			</S.ShoppingCartWrapper>
+		)
+	}
 }
 
 const mapStateToProps = (state) => ({
-    allItensInShoppingCart: state.shoppingCart.allItensInShoppingCart,
-  })
+	allItensInShoppingCart: state.shoppingCart.allItensInShoppingCart,
+})
 
 const mapDispatchToProps = dispatch => ({
-    setShoppingCart: (appears) => dispatch(setShoppingCart(appears))
+	setShoppingCart: (appears) => dispatch(setShoppingCart(appears)),
+	setAllItensInShoppingCart: (products) => dispatch(setAllItensInShoppingCart(products))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShoppingCart)
