@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import * as S from './styles'
 
-import { setShoppingCart, setAllItensInShoppingCart } from '../../actions/shoppingCart'
+import { setShoppingCart, setAllItensInShoppingCart, removeProductFromCart, changeQuantity } from '../../actions/shoppingCart'
 
 import ProductInCart from '../ProductInCart'
 
@@ -16,15 +16,15 @@ class ShoppingCart extends React.Component {
 		}
 	}
 
-	// // acho que preciso manter por conta do remover
-	// componentDidUpdate() {
-	// 	const estadoComoString = JSON.stringify(this.props.allItensInShoppingCart)
-	// 	localStorage.setItem('carrinho', estadoComoString)
-	// }
+	// acho que preciso manter por conta do remover
+	componentDidUpdate() {
+		const estadoComoString = JSON.stringify(this.props.allItensInShoppingCart)
+		localStorage.setItem('carrinho', estadoComoString)
+	}
 
 
 	render() {
-		const { setShoppingCart, allItensInShoppingCart } = this.props
+		const { setShoppingCart, allItensInShoppingCart, removeProductFromCart, changeQuantity } = this.props
 
 		const shoppingCartAppearsDisappears = () => {
 			setShoppingCart(false)
@@ -51,7 +51,10 @@ class ShoppingCart extends React.Component {
 
 					<S.MainContainer>
 						{allItensInShoppingCart.map((product, index) => (
-							<ProductInCart key={index} product={product} />
+							<ProductInCart key={index} product={product} 
+								removeProductFromCart={removeProductFromCart} 
+								changeQuantity={changeQuantity}
+							/>
 						))}
 
 					</S.MainContainer>
@@ -73,7 +76,9 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = dispatch => ({
 	setShoppingCart: (appears) => dispatch(setShoppingCart(appears)),
-	setAllItensInShoppingCart: (products) => dispatch(setAllItensInShoppingCart(products))
+	setAllItensInShoppingCart: (products) => dispatch(setAllItensInShoppingCart(products)),
+	removeProductFromCart: (productId) => dispatch(removeProductFromCart(productId)),
+	changeQuantity: (information) => dispatch(changeQuantity(information))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShoppingCart)

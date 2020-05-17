@@ -19,3 +19,17 @@ export const addProductToCart = product => ({
         product
     }
 })
+
+export const removeProductFromCart = productId => ({
+    type: "REMOVE_PRODUCT_FROM_CART",
+    payload: {
+        productId
+    }
+})
+
+export const changeQuantity = information => ({
+    type: "CHANGE_QUANTITY",
+    payload: {
+        information
+    }
+})

@@ -1,25 +1,6 @@
 const initialState = {
     shoppingCartAppears: false,
-    allItensInShoppingCart: [
-        // {
-        //     id: 1,
-        //     image: "",
-        // 	name: "T-SHIRT LEATHER DULL",
-        // 	actual_price: "R$ 149,90",
-        // 	installments: "3x R$ 49,97",
-        // 	size: "GG",
-        // 	quantity: 1
-        // },
-        // {
-        //     id: 2,
-        //     image: "https://viniciusvinna.netlify.app/assets/api-fashionista/20002581_614_catalog_1.jpg",
-        // 	name: "BATA DECOTE FLUID",
-        // 	actual_price: "R$ 79,00",
-        // 	installments: "3x R$ 39,97",
-        // 	size: "P",
-        // 	quantity: 2
-        // },
-    ],
+    allItensInShoppingCart: [],
 }
 
 const shoppingCart = (state = initialState, action) => {
@@ -44,6 +25,30 @@ const shoppingCart = (state = initialState, action) => {
             return {
                 ...state,
                 allItensInShoppingCart: copyAllItensInShoppingCart
+            }
+
+        case 'REMOVE_PRODUCT_FROM_CART':
+            const filteredItens = state.allItensInShoppingCart.filter(item => {
+                return item.id !== action.payload.productId
+            })
+            return {
+                ...state,
+                allItensInShoppingCart: filteredItens
+            }
+        
+        case 'CHANGE_QUANTITY':
+            const copyAllItensInShoppingCart2 = [...state.allItensInShoppingCart]
+            const productInformation = action.payload.information
+            const findProduct = state.allItensInShoppingCart.findIndex(item =>
+                item.id === productInformation.id)
+            if(productInformation.option === "remove"){
+                copyAllItensInShoppingCart2[findProduct].quantity -= 1
+            } else if(productInformation.option === "add"){
+                copyAllItensInShoppingCart2[findProduct].quantity += 1
+            }
+            return {
+                ...state,
+                allItensInShoppingCart: copyAllItensInShoppingCart2
             }
 
         default:
