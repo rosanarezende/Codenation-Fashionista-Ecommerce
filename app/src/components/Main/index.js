@@ -8,7 +8,13 @@ import * as S from './styles.js'
 import Product from '../Product';
 
 function Main(props) {
-    const { allProducts, getProducts } = props
+    const { 
+        allProducts, 
+        getProducts 
+    } = props
+
+    // // testando error boundary
+    // const allProducts = "oi"
 
     useEffect(() => {
         getProducts()

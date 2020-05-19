@@ -1,27 +1,38 @@
 import React from 'react'
-
-function logErrorToMyService(error, info) {
-    console.log(error, info);
-}
-
 class ErrorBoundary extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { hasError: false };
+        this.state = {
+            hasError: false,
+            error: null,
+            info: null
+        };
     }
-
-    static getDerivedStateFromError(error) {
-        return { hasError: true };
-    }
-
     componentDidCatch(error, info) {
-        logErrorToMyService(error, info);
+        this.setState({
+            hasError: true,
+            error: error,
+            info: info
+        });
     }
-
     render() {
-        if (this.state.hasError) {
-            return <h1>Something went wrong.</h1>;
+        const { hasError, error, info } = this.state
+
+        if (hasError) {
+            console.error(`
+O erro: ${error.toString()}
+Onde ocorreu: ${info.componentStack}
+            `)
+            return (
+                <div>
+                    <h1>Oops, algo deu errado:(</h1>
+                    {/* 
+                    <h3>O erro:</h3> {error.toString()}
+                    <h3>Onde ocorreu:</h3> {info.componentStack} */}
+                </div>
+            );
         }
+
         return this.props.children;
     }
 }
