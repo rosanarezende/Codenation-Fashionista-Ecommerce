@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import * as S from './styles'
+import './index.css'
 
 function DetailText(props) {
 
-	const { 
-		product, 
-		selectedSize, 
-		setSelectedSize, 
-		addProductToCart 
+	const {
+		product,
+		selectedSize,
+		setSelectedSize,
+		addProductToCart
 	} = props
 
 	const [msgAppears, setMsgAppears] = useState(false)
@@ -38,21 +39,22 @@ function DetailText(props) {
 	}
 
 	return (
-		<S.TextWrapper>
+		<div className="detail__right">
 
 			<h3>{product.name}</h3>
 			<span>
 				{product.on_sale &&
-					<S.BeforePrice>{product.regular_price}</S.BeforePrice>
+					<span className="detail__regularprice">{product.regular_price}</span>
 				}
-				<span>{product.actual_price}</span> <S.Installments>em até {product.installments}</S.Installments>
+				<span>{product.actual_price}</span> <span
+					className="detail__installments">em até {product.installments}</span>
 			</span>
 
-			<S.SizeWrapper>
-				<S.TitleGrey>Escolha o tamanho</S.TitleGrey>
+			<div className="detail__sizewrapper">
+				<p className="detail__titlegrey">Escolha o tamanho</p>
 
 				{msgAppears &&
-					<S.SecretText>É necessário escolher um tamanho!</S.SecretText>
+					<p className="detail__secrettext">É necessário escolher um tamanho!</p>
 				}
 
 				{product.sizes.length > 0 &&
@@ -61,27 +63,29 @@ function DetailText(props) {
 						.map(information => {
 							return information.sku === selectedSize
 								?
-								<S.SizeButtonBlack
+								<button
+									className="detail__sizebutton--black"
 									key={information.sku}
 									onClick={() => onClickSize(information.sku)}
 								>
 									{information.size}
-								</S.SizeButtonBlack>
+								</button>
 								:
-								<S.SizeButton
+								<button
+									className="detail__sizebutton"
 									key={information.sku}
 									onClick={() => onClickSize(information.sku)}
 								>
 									{information.size}
-								</S.SizeButton>
+								</button>
 						})}
-			</S.SizeWrapper>
+			</div>
 
-			<S.AddButton onClick={addToCart}>
+			<button className="detail__addbutton" onClick={addToCart}>
 				Adicionar à Sacola
-			</S.AddButton>
+			</button>
 
-		</S.TextWrapper>
+		</div>
 	)
 }
 

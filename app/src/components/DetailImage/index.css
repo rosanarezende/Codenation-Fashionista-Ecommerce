@@ -1,0 +1,28 @@
+.detail__left{
+    width: 30vw;
+    margin-right: 2rem;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+}
+@media screen and (max-width: 1200px) {
+    .detail__container{
+        margin-bottom: 1rem;
+        width: 80vw;
+    }
+}
+
+.detail__image{
+    width: 100%;
+}
+
+.detail__stamp{
+    position: absolute;
+    display: flex;
+    align-items: flex-end;
+    top: 0;
+    right: 0;
+    background-color: black;
+    color: white;
+    padding: 0.2rem 0.5rem;
+}

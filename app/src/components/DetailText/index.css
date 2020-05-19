@@ -1,0 +1,60 @@
+.detail__right{
+    display: flex;
+    flex-direction: column;
+}
+
+.detail__regularprice{
+    margin-right: 0.5rem;
+    color: grey;
+    text-decoration: line-through;
+}
+
+.detail__installments{
+    color: grey;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+.detail__sizewrapper{
+    margin: 0.5rem 0;
+}
+
+.detail__titlegrey{
+    color: grey;
+    margin-bottom: 0.5rem;
+}
+
+.detail__secrettext{
+    margin-bottom: 0.5rem;
+    color: red;
+    font-size: 0.8em;
+}
+
+.detail__sizebutton{
+    width: 30px;
+    height: 25px;
+    margin-right: 5px;
+    border-radius: 5px;
+    background: transparent;
+    border: 1px solid grey;
+}
+
+.detail__sizebutton--black{
+    width: 30px;
+    height: 25px;
+    margin-right: 5px;
+    border-radius: 5px;
+    background: black;
+    color: white;
+    border: 1px solid black;
+}
+
+.detail__addbutton{
+    margin-top: 1rem;
+    padding: 5px;
+    background: black;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid grey;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+}

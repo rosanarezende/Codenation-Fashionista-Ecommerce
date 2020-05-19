@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 import { setSelectedSize } from '../../actions/products'
 import { addProductToCart } from "../../actions/shoppingCart"
 
-import * as S from './styles'
+// import * as S from './styles'
+import './index.css'
 
 import Header from '../../components/Header'
 import Backdrop from '../../components/Backdrop'
@@ -37,7 +38,7 @@ function DetailPage(props) {
 			<Header />
 
 			{product &&
-				<S.DetailPageWrapper>
+				<div className="detail">
 					<DetailImage product={product} />
 
 					<DetailText
@@ -46,7 +47,7 @@ function DetailPage(props) {
 						setSelectedSize={setSelectedSize}
 						addProductToCart={addProductToCart}
 					/>
-				</S.DetailPageWrapper>
+				</div>
 			}
 
 			{shoppingCartAppears &&
