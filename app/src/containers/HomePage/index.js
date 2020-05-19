@@ -6,13 +6,14 @@ import Main from '../../components/Main';
 import Backdrop from '../../components/Backdrop';
 import ShoppingCart from '../../components/ShoppingCart/index.js';
 import Search from '../../components/Search';
+import ErrorBoundary from '../ErrorBoundary';
 
 function HomePage(props) {
 
     const { shoppingCartAppears, searchAppears } = props
 
     return (
-        <>
+        <ErrorBoundary>
             <Header />
             <Main />
             {shoppingCartAppears &&
@@ -29,7 +30,7 @@ function HomePage(props) {
                 </>
             }
 
-        </>
+        </ErrorBoundary>
     );
 }
 

@@ -12,6 +12,7 @@ import ShoppingCart from '../../components/ShoppingCart'
 import Search from '../../components/Search'
 import DetailImage from '../../components/DetailImage'
 import DetailText from '../../components/DetailText'
+import ErrorBoundary from '../ErrorBoundary'
 
 function DetailPage(props) {
 	const { 
@@ -32,7 +33,7 @@ function DetailPage(props) {
 	// ter um modo de limpar esses detalhes quando eu saio da página
 
 	return (
-		<>
+		<ErrorBoundary>
 			<Header />
 
 			{product &&
@@ -61,7 +62,7 @@ function DetailPage(props) {
 					<Search />
 				</>
 			}
-		</>
+		</ErrorBoundary>
 	)
 }
 
