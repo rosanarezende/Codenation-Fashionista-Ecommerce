@@ -3,7 +3,7 @@
     flex-direction: column;
 }
 
-.detail__regularprice{
+.detail__regular-price{
     margin-right: 0.5rem;
     color: grey;
     text-decoration: line-through;
@@ -15,31 +15,39 @@
     font-weight: bold;
 }
 
-.detail__sizewrapper{
+.detail__size-wrapper{
     margin: 0.5rem 0;
 }
 
-.detail__titlegrey{
+.detail__title-grey{
     color: grey;
     margin-bottom: 0.5rem;
 }
 
-.detail__secrettext{
+.detail__secret-text{
     margin-bottom: 0.5rem;
     color: red;
     font-size: 0.8em;
 }
 
-.detail__sizebutton{
+.detail__size-button{
     width: 30px;
     height: 25px;
     margin-right: 5px;
     border-radius: 5px;
     background: transparent;
     border: 1px solid grey;
+    cursor: pointer;
 }
 
-.detail__sizebutton--black{
+.detail__size-button:hover{
+    background: black;
+    color: white;
+    border: 1px solid black;
+    font-weight: bold;
+}
+
+.detail__size-button--black{
     width: 30px;
     height: 25px;
     margin-right: 5px;
@@ -47,14 +55,21 @@
     background: black;
     color: white;
     border: 1px solid black;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-.detail__addbutton{
+.detail__add-button{
     margin-top: 1rem;
-    padding: 5px;
+    padding: 10px;
     background: black;
     color: white;
     border-radius: 5px;
     border: 1px solid grey;
     box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.detail__add-button:hover{
+    font-weight: bold;
 }

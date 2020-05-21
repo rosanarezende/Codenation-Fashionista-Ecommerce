@@ -1,5 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
+
+import './index.css'
 import * as S from './styles'
 
 import { setShoppingCart, setAllItensInShoppingCart, removeProductFromCart, changeQuantity } from '../../actions/shoppingCart'

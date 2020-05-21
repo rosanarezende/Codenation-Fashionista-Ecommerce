@@ -1,6 +1,4 @@
-import styled from 'styled-components'
-
-export const ProductCard = styled.div`
+.product{
     width: 22.5vw;
     margin: 0.5vw;
     display: flex;
@@ -8,21 +6,21 @@ export const ProductCard = styled.div`
     text-align: center;
     overflow: hidden;
     position: relative;
-    :hover{
-        cursor: pointer;
-    }
+    cursor: pointer;
+}
 
-    @media screen and (max-width: 1200px) {
+@media screen and (max-width: 1200px) {
+    .product{
         width: 40vw;
     }
-`
+}
 
-export const Image = styled.img`
+.product__img{
     width: 100%;
-`
+}
 
-export const Stamp = styled.div`
-	position: absolute;
+.product__stamp{
+    position: absolute;
 	display: flex;
     align-items: flex-end;
 	top: 0;
@@ -30,15 +28,15 @@ export const Stamp = styled.div`
     background-color: black;
     color: white;
     padding: 0.2rem 0.5rem;
-`
+}
 
-export const Price = styled.div`
+.product__price{
     display: flex;
-    justify-content: center;
-`
+    justify-content: center; 
+}
 
-export const BeforePrice = styled.span`
+.product__before-price{
     margin-right: 1rem;
     color: grey;
     text-decoration: line-through;
-`
+}

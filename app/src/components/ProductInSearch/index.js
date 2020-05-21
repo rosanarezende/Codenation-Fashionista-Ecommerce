@@ -1,29 +1,35 @@
 import React from 'react'
-import * as S from './styles'
+
+import './index.css'
 
 function ProductInSearch(props){
     const { product } = props
 
     return(
-        <S.ProductInSearchWrapper>
+        <div className="product-in-search">
             
-            <S.InternalDivisionLeft>
+            <div className="product-in-search__left">
                 {product.image !== ""
-                    ? <S.Image src={product.image} alt={product.name} />
-                    : <S.Image src="https://via.placeholder.com/470x594/FFFFFF/?text=Imagem+Indispon%C3%ADvel" alt={product.name} />
+                    ? <img className="product-in-search__img" 
+                        src={product.image} alt={product.name} />
+                    : <img className="product-in-search__img" 
+                        src="https://via.placeholder.com/470x594/FFFFFF/?text=Imagem+Indispon%C3%ADvel" 
+                        alt={product.name} />
                 }
-            </S.InternalDivisionLeft>
+            </div>
 
-            <S.InternalDivisionCenter>
+            <div className="product-in-search__center">
                 <h3>{product.name.toUpperCase()}</h3>
-            </S.InternalDivisionCenter>
+            </div>
 
-            <S.InternalDivisionRigth>
+            <div className="product-in-search__right">
                 <h3>{product.regular_price}</h3>
-                <S.TextGrey>{product.installments}</S.TextGrey>
-            </S.InternalDivisionRigth>
+                <p className="product-in-search__text-grey">
+                    {product.installments}
+                </p>
+            </div>
             
-        </S.ProductInSearchWrapper>
+        </div>
     )
 }
 

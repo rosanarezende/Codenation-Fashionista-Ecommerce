@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { getProducts } from '../../actions/products'
 
-import * as S from './styles.js'
+import './index.css'
 
 import Product from '../Product';
 
@@ -21,27 +21,27 @@ function Main(props) {
     }, [getProducts])
 
     return (
-        <S.MainWrapper>
+        <main className="main">
 
-            <S.ProductsContent>
+            <div className="main__containe">
 
                 {allProducts.length > 0 &&
-                    <S.Quantity>{allProducts.length} itens</S.Quantity>
+                    <p className="main__text">{allProducts.length} itens</p>
                 }
 
                 {allProducts.length === 0
                     ? <div>Carregando...</div>
                     :
-                    <S.ProductsGrid>
+                    <div className="main__products-grid">
                         {allProducts.map((product, index) => (
                             <Product product={product} key={index} />
                         ))}
-                    </S.ProductsGrid>
+                    </div>
                 }
 
-            </S.ProductsContent>
+            </div>
 
-        </S.MainWrapper>
+        </main>
     );
 }
 

@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import * as S from './styles'
 import './index.css'
 
 function DetailText(props) {
@@ -44,17 +43,17 @@ function DetailText(props) {
 			<h3>{product.name}</h3>
 			<span>
 				{product.on_sale &&
-					<span className="detail__regularprice">{product.regular_price}</span>
+					<span className="detail__regular-price">{product.regular_price}</span>
 				}
 				<span>{product.actual_price}</span> <span
 					className="detail__installments">em até {product.installments}</span>
 			</span>
 
-			<div className="detail__sizewrapper">
-				<p className="detail__titlegrey">Escolha o tamanho</p>
+			<div className="detail__size-wrapper">
+				<p className="detail__title-grey">Escolha o tamanho</p>
 
 				{msgAppears &&
-					<p className="detail__secrettext">É necessário escolher um tamanho!</p>
+					<p className="detail__secret-text">É necessário escolher um tamanho!</p>
 				}
 
 				{product.sizes.length > 0 &&
@@ -64,7 +63,7 @@ function DetailText(props) {
 							return information.sku === selectedSize
 								?
 								<button
-									className="detail__sizebutton--black"
+									className="detail__size-button--black"
 									key={information.sku}
 									onClick={() => onClickSize(information.sku)}
 								>
@@ -72,7 +71,7 @@ function DetailText(props) {
 								</button>
 								:
 								<button
-									className="detail__sizebutton"
+									className="detail__size-button"
 									key={information.sku}
 									onClick={() => onClickSize(information.sku)}
 								>
@@ -81,7 +80,7 @@ function DetailText(props) {
 						})}
 			</div>
 
-			<button className="detail__addbutton" onClick={addToCart}>
+			<button className="detail__add-button" onClick={addToCart}>
 				Adicionar à Sacola
 			</button>
 

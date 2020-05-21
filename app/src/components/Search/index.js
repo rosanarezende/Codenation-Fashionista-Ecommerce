@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import * as S from './styles'
+
+import './index.css'
 
 import { setSearch } from '../../actions/search'
 
@@ -27,46 +28,46 @@ function Search(props) {
     }
 
     return (
-        <S.SearchWrapper>
+        <div className="search">
 
-            <S.SearchHeader>
-                <S.IconLink href='#' onClick={searchAppearsDisappears}>
+            <header className="search__header">
+                <span className="search__icon-link" onClick={searchAppearsDisappears}>
                     <i className="fa fa-arrow-right" aria-hidden="true"></i>
-                </S.IconLink>
+                </span>
                 <h4>Buscar produtos</h4>
                 <div></div>
-            </S.SearchHeader>
+            </header>
 
-            <S.SearchMain>
-                <S.Container>
-                    <S.SearchInput
+            <main className="search__main">
+                <div className="search__container">
+                    <input className="search__input"
                         value={inputSearch}
                         onChange={handleInputSearch}
                         placeholder="Buscar..."
                     />
-                </S.Container>
-            </S.SearchMain>
+                </div>
+            </main>
 
-            <S.SearchFooter>
-                <S.Container>
+            <footer className="search__footer">
+                <div className="search__container">
                     {filteredItens.length === 0
                         ?
-                        <S.Quantity>
+                        <p className="search__quantity">
                             Nenhum item encontrado
-                        </S.Quantity>
+                        </p>
                         :
-                        <S.Quantity>
+                        <p className="search__quantity">
                             {filteredItens.length} itens
-                        </S.Quantity>
+                        </p>
                     }
 
                     {filteredItens.map(product => (
                         <ProductInSearch key={product.id} product={product} />
                     ))}
-                </S.Container>
-            </S.SearchFooter>
+                </div>
+            </footer>
 
-        </S.SearchWrapper>
+        </div>
     )
 }
 
