@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { setSelectedSize } from '../../actions/products'
 import { addProductToCart } from "../../actions/shoppingCart"
 
-// import * as S from './styles'
 import './index.css'
 
 import Header from '../../components/Header'
