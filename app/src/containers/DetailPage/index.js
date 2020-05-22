@@ -14,7 +14,7 @@ import DetailImage from '../../components/DetailImage'
 import DetailText from '../../components/DetailText'
 import ErrorBoundary from '../ErrorBoundary'
 
-function DetailPage(props) {
+export function DetailPage(props) {
 	const { 
 		product, 
 		shoppingCartAppears, 
@@ -52,14 +52,14 @@ function DetailPage(props) {
 			{shoppingCartAppears &&
 				<>
 					<Backdrop />
-					<ShoppingCart />
+					<ShoppingCart data-testid="shop-appears"/>
 				</>
 			}
 
 			{searchAppears &&
 				<>
 					<Backdrop />
-					<Search />
+					<Search data-testid="search-appears" className="search-appears"/>
 				</>
 			}
 		</ErrorBoundary>

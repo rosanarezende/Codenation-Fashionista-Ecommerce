@@ -7,7 +7,7 @@ import { setSearch } from '../../actions/search'
 
 import ProductInSearch from '../ProductInSearch'
 
-function Search(props) {
+export function Search(props) {
     const { setSearch, allProducts } = props
 
     const [inputSearch, setInputSearch] = useState('')
@@ -28,10 +28,12 @@ function Search(props) {
     }
 
     return (
-        <div className="search">
+        <div className="search" data-testid="search">
 
             <header className="search__header">
-                <span className="search__icon-link" onClick={searchAppearsDisappears}>
+                <span className="search__icon-link" 
+                    data-testid="icon"
+                    onClick={searchAppearsDisappears}>
                     <i className="fa fa-arrow-right" aria-hidden="true"></i>
                 </span>
                 <h4>Buscar produtos</h4>
@@ -40,7 +42,7 @@ function Search(props) {
 
             <main className="search__main">
                 <div className="search__container">
-                    <input className="search__input"
+                    <input className="search__input" data-testid="input"
                         value={inputSearch}
                         onChange={handleInputSearch}
                         placeholder="Buscar..."
@@ -52,17 +54,17 @@ function Search(props) {
                 <div className="search__container">
                     {filteredItens.length === 0
                         ?
-                        <p className="search__quantity">
+                        <p className="search__quantity" data-testid="search-any">
                             Nenhum item encontrado
                         </p>
                         :
-                        <p className="search__quantity">
+                        <p className="search__quantity" data-testid="search-any">
                             {filteredItens.length} itens
                         </p>
                     }
-
-                    {filteredItens.map(product => (
-                        <ProductInSearch key={product.id} product={product} />
+                    
+                    {filteredItens.map((product, index) => (
+                        <ProductInSearch key={index} product={product} />
                     ))}
                 </div>
             </footer>
