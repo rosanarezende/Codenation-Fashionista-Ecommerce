@@ -1,9 +1,7 @@
 
 .main{
-    display: flex;
     background-color: #f9f9f9;
     margin-top: 5vh;
-    padding: 0 2rem;
 }
 
 @media screen and (max-width: 1200px) {
@@ -15,6 +13,13 @@
 .main__container{
     display: flex;
     flex-direction: column;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.main__loading{
+    margin-top: 2vh;
+
 }
 
 .main__text{

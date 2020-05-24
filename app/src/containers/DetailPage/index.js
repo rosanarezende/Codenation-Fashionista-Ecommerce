@@ -13,6 +13,8 @@ import Search from '../../components/Search'
 import DetailImage from '../../components/DetailImage'
 import DetailText from '../../components/DetailText'
 import ErrorBoundary from '../ErrorBoundary'
+import { routes } from '../../utils/constants'
+import { push } from 'connected-react-router'
 
 export function DetailPage(props) {
 	const { 
@@ -22,7 +24,8 @@ export function DetailPage(props) {
 		selectedSize, 
 		setSelectedSize, 
 		addProductToCart,
-		allItensInShoppingCart
+		allItensInShoppingCart,
+		goToHome
 	} = props
 
 	useEffect(() => {
@@ -45,6 +48,7 @@ export function DetailPage(props) {
 						selectedSize={selectedSize}
 						setSelectedSize={setSelectedSize}
 						addProductToCart={addProductToCart}
+						goToHome={goToHome}
 					/>
 				</div>
 			}
@@ -77,7 +81,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
 	setSelectedSize: (size) => dispatch(setSelectedSize(size)),
-	addProductToCart: (product) => dispatch(addProductToCart(product))
+	addProductToCart: (product) => dispatch(addProductToCart(product)),
+	goToHome: () => dispatch(push(routes.home))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(DetailPage)

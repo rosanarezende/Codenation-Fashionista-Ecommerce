@@ -23,14 +23,14 @@ function Main(props) {
     return (
         <main className="main">
 
-            <div className="main__containe">
+            <div className="main__container">
 
                 {allProducts.length > 0 &&
                     <p className="main__text">{allProducts.length} itens</p>
                 }
 
                 {allProducts.length === 0
-                    ? <div>Carregando...</div>
+                    ? <div className="main__loading">Carregando...</div>
                     :
                     <div className="main__products-grid">
                         {allProducts.map((product, index) => (

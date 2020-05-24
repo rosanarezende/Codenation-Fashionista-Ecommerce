@@ -30,14 +30,13 @@ function ProductInCart(props) {
 
 			<div className="product-in-cart__left">
 
-				{product.image
-					?
-					<img className="product-in-cart__img" 
-						src={product.image} alt={product.name} />
-					:
-					<img className="product-in-cart__img" 
-						src="https://via.placeholder.com/470x594/FFFFFF/?text=Imagem+Indispon%C3%ADvel" alt={product.name} />
-				}
+				<img className="product-in-cart__img"
+					src={product.image
+						? product.image
+						: "https://via.placeholder.com/470x594/FFFFFF/?text=Imagem+Indispon%C3%ADvel"
+					}
+					alt={product.name}
+				/>
 
 				<p className="product-in-cart__remove" 
 					onClick={() => removeItem(product.id)}>Remover item</p>
@@ -45,7 +44,7 @@ function ProductInCart(props) {
 			</div>
 
 			<div className="product-in-cart__center">
-				<h3>{product.name.toUpperCase()}</h3>
+				<h4>{product.name.toUpperCase()}</h4>
 				<p className="product-in-cart__text-grey">Tam: {product.size}</p>
 
 				<div className="product-in-cart__quantity-container">
@@ -74,11 +73,10 @@ function ProductInCart(props) {
 			</div>
 
 			<div className="product-in-cart__right">
-				<h3>{product.actual_price}</h3>
+				<h4>{product.actual_price}</h4>
 				<p className="product-in-cart__text-grey">
 					{product.installments}
 				</p>
-
 			</div>
 
 		</div>

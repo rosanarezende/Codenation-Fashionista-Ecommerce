@@ -7,9 +7,10 @@
 }
 
 @media screen and (max-width: 1200px) {
-    .detail__container{
+    .detail__left{
+        margin: auto;
         margin-bottom: 1rem;
-        width: 80vw;
+        width: 85vw;
     }
 }
 

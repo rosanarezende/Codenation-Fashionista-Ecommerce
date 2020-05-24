@@ -19,13 +19,13 @@ function Product(props) {
     return (
         <div className="product" onClick={() => openProductDetail(product)}>
 
-            {product.image !== ""
-                ? <img className="product__img" 
-                    src={product.image} alt={product.name} />
-                : <img className="product__img" 
-                    src="https://via.placeholder.com/470x594/FFFFFF/?text=Imagem+Indispon%C3%ADvel" 
-                    alt={product.name} />
-            }
+            <img className="product__img"
+                src={product.image !== ""
+                    ? product.image
+                    : "https://via.placeholder.com/470x594/FFFFFF/?text=Imagem+Indispon%C3%ADvel"
+                }
+                alt={product.name}
+            />
 
             {product.on_sale &&
                 <div className="product__stamp">{product.discount_percentage}</div>

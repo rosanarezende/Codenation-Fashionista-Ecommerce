@@ -7,7 +7,8 @@ function DetailText(props) {
 		product,
 		selectedSize,
 		setSelectedSize,
-		addProductToCart
+		addProductToCart,
+		goToHome
 	} = props
 
 	const [msgAppears, setMsgAppears] = useState(false)
@@ -17,7 +18,7 @@ function DetailText(props) {
 		setMsgAppears(false)
 	}
 
-	function addToCart() {
+	async function addToCart() {
 		if (selectedSize === "") {
 			setMsgAppears(true)
 		} else {
@@ -32,8 +33,9 @@ function DetailText(props) {
 				size: size,
 				quantity: 1
 			}
-			addProductToCart(productGoToCart)
+			await addProductToCart(productGoToCart)
 			setSelectedSize("")
+			goToHome()
 		}
 	}
 
