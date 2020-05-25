@@ -12,7 +12,8 @@ function ProductInSearch(props){
     }
 
     return(
-        <div className="product-in-search" onClick={() => openProductDetail(product)}>
+        <div className="product-in-search" data-testid="product-in-search" 
+            onClick={() => openProductDetail(product)}>
             
             <div className="product-in-search__left">
                 {product.image !== ""

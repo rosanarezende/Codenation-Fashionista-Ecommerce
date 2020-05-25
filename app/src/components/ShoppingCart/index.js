@@ -8,7 +8,7 @@ import { setShoppingCart, setAllItensInShoppingCart, removeProductFromCart, chan
 import ProductInCart from '../ProductInCart'
 import Backdrop from '../Backdrop'
 
-function ShoppingCart(props) {
+export function ShoppingCart(props) {
 	const { setShoppingCart, allItensInShoppingCart, removeProductFromCart, changeQuantity } = props
 
 	useEffect(() => {
@@ -34,7 +34,7 @@ function ShoppingCart(props) {
 	return (
 		<>
 			<Backdrop />
-			<div className="shopping-cart">
+			<div className="shopping-cart" data-testid="shopping-cart">
 
 				<header className="shopping-cart__header">
 					<span className="shopping-cart__icon" onClick={shoppingCartAppearsDisappears}>

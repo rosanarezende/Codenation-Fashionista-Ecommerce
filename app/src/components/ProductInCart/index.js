@@ -26,7 +26,7 @@ function ProductInCart(props) {
 	}
 
 	return (
-		<div className="product-in-cart">
+		<div className="product-in-cart" data-testid="product-in-cart">
 
 			<div className="product-in-cart__left">
 

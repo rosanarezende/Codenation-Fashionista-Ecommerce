@@ -7,7 +7,7 @@ import './index.css'
 
 import Product from '../Product';
 
-function Main(props) {
+export function Main(props) {
     const { 
         allProducts, 
         getProducts 
@@ -21,19 +21,19 @@ function Main(props) {
     }, [getProducts])
 
     return (
-        <main className="main">
+        <main className="main" data-testid="main">
 
             <div className="main__container">
 
-                {allProducts.length > 0 &&
+                {allProducts?.length > 0 &&
                     <p className="main__text">{allProducts.length} itens</p>
                 }
 
-                {allProducts.length === 0
+                {allProducts?.length === 0
                     ? <div className="main__loading">Carregando...</div>
                     :
                     <div className="main__products-grid">
-                        {allProducts.map((product, index) => (
+                        {allProducts?.map((product, index) => (
                             <Product product={product} key={index} />
                         ))}
                     </div>

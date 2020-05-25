@@ -24,7 +24,7 @@ O erro: ${error.toString()}
 Onde ocorreu: ${info.componentStack}
             `)
             return (
-                <div>
+                <div className="erro" data-testid="erro">
                     <h1>Oops, algo deu errado:(</h1>
                     {/* 
                     <h3>O erro:</h3> {error.toString()}

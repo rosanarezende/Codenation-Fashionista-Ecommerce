@@ -8,8 +8,9 @@ import { setSearch } from '../../actions/search'
 
 import './index.css'
 
-function Header(props) {
+export function Header(props) {
   const {setShoppingCart, setSearch, allItensInShoppingCart, goToHome, setAllItensInShoppingCart } = props
+  // console.log(allItensInShoppingCart)
 
   useEffect(() => {   
       const noEstadodoCarrinho = localStorage.getItem('carrinho')
@@ -27,7 +28,7 @@ function Header(props) {
   }
 
   return (
-    <header className="header">
+    <header className="header" data-testid="header">
       <nav className="header__navbar">
         <h1 className="header__title" onClick={() => goToHome()} >FASHONISTA</h1>
 

@@ -39,7 +39,7 @@ export function DetailPage(props) {
 			<Header />
 
 			{product &&
-				<div className="detail">
+				<div className="detail" data-testid="detail">
 					<DetailImage product={product} />
 
 					<DetailText
@@ -78,3 +78,26 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(DetailPage)
+
+
+// // TESTE
+// import React from "react";
+// import { render } from "@testing-library/react"
+// import { DetailPage } from "./index"
+// import { products } from "../../utils/mock"
+
+// const mockProduct = {...products[4]}
+
+// describe("DetailPage", () => {
+//     let getByTestId
+//     beforeEach(() => {
+//         const view = render(<DetailPage product={mockProduct}/>)
+//         getByTestId = view.getByTestId
+//     })
+    
+//     it("should render ErrorBoundary correctly", async () => {
+//         const erro = getByTestId("erro")        
+//         expect(erro).toHaveClass("erro")
+//     })
+
+// })

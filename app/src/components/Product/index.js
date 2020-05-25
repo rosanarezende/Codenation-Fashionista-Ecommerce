@@ -7,7 +7,7 @@ import { setProductDetail } from '../../actions/products'
 
 import './index.css'
 
-function Product(props) {
+export function Product(props) {
 
     const { product, goToDetail, setProductDetail } = props
 
@@ -17,7 +17,8 @@ function Product(props) {
     }
 
     return (
-        <div className="product" onClick={() => openProductDetail(product)}>
+        <div className="product" data-testid="product"
+            onClick={() => openProductDetail(product)}>
 
             <img className="product__img"
                 src={product.image !== ""

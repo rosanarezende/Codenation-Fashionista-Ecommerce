@@ -40,7 +40,7 @@ function DetailText(props) {
 	}
 
 	return (
-		<div className="detail__right">
+		<div className="detail__right" data-testid="detail-text">
 
 			<h3>{product.name}</h3>
 			<span>

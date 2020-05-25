@@ -800,3 +800,24 @@ export const products = [
         ]
     }
 ]
+
+export const productsInCart = [
+    {
+        "id": 1590279785135,
+        "name": "PULSEIRA STYLISH",
+        "actual_price": "R$ 29,90",
+        "installments": "1x R$ 29,90",
+        "image": "https://viniciusvinna.netlify.app/assets/api-fashionista/20001913_009_catalog_1.jpg",
+        "size": "U",
+        "quantity": 3
+    },
+    {
+        "id": 1590406194831,
+        "name": "ÓCULOS DE SOL AVIADOR VINTAGE",
+        "actual_price": "R$ 49,90",
+        "installments": "1x R$ 49,90",
+        "image": "",
+        "size": "P",
+        "quantity": 1
+    }
+] 
