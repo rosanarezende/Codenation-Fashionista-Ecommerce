@@ -3,10 +3,16 @@ import React from 'react'
 import './index.css'
 
 function ProductInSearch(props){
-    const { product } = props
+    const { product, setSearch, setProductDetail, goToDetail } = props
+    
+    const openProductDetail = async (product) => {
+        await setProductDetail(product)
+        goToDetail()
+        setSearch(false)
+    }
 
     return(
-        <div className="product-in-search">
+        <div className="product-in-search" onClick={() => openProductDetail(product)}>
             
             <div className="product-in-search__left">
                 {product.image !== ""

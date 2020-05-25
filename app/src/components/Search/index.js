@@ -4,12 +4,15 @@ import { connect } from 'react-redux'
 import './index.css'
 
 import { setSearch } from '../../actions/search'
+import { setProductDetail } from '../../actions/products'
 
 import ProductInSearch from '../ProductInSearch'
 import Backdrop from '../Backdrop'
+import { push } from 'connected-react-router'
+import { routes } from '../../utils/constants'
 
 export function Search(props) {
-	const { setSearch, allProducts } = props
+	const { allProducts, setSearch, setProductDetail, goToDetail } = props
 
 	const [inputSearch, setInputSearch] = useState('')
 
@@ -67,7 +70,13 @@ export function Search(props) {
 						}
 
 						{filteredItens.map((product, index) => (
-							<ProductInSearch key={index} product={product} />
+							<ProductInSearch 
+								key={index} 
+								product={product} 
+								setSearch={setSearch}
+								setProductDetail={setProductDetail}
+								goToDetail={goToDetail}
+							/>
 						))}
 					</div>
 				</footer>
@@ -82,7 +91,9 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-	setSearch: (appears) => dispatch(setSearch(appears))
+	setSearch: (appears) => dispatch(setSearch(appears)),
+    setProductDetail: (product) => dispatch(setProductDetail(product)),
+	goToDetail: () => dispatch(push(routes.detail))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search)

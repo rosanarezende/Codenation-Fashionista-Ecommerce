@@ -7,7 +7,6 @@ import { addProductToCart } from "../../actions/shoppingCart"
 import './index.css'
 
 import Header from '../../components/Header'
-import Backdrop from '../../components/Backdrop'
 import ShoppingCart from '../../components/ShoppingCart'
 import Search from '../../components/Search'
 import DetailImage from '../../components/DetailImage'
