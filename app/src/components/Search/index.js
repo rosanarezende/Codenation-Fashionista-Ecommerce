@@ -1,81 +1,99 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import * as S from './styles'
+
+import './index.css'
 
 import { setSearch } from '../../actions/search'
+import { setProductDetail } from '../../actions/products'
 
 import ProductInSearch from '../ProductInSearch'
+import Backdrop from '../Backdrop'
+import { push } from 'connected-react-router'
+import { routes } from '../../utils/constants'
 
-function Search(props) {
-    const { setSearch, allProducts } = props
+export function Search(props) {
+	const { allProducts, setSearch, setProductDetail, goToDetail } = props
 
-    const [inputSearch, setInputSearch] = useState('')
+	const [inputSearch, setInputSearch] = useState('')
 
-    let filteredItens = []
-    if (inputSearch !== '') {
-        filteredItens = allProducts.filter(product =>
-            product.name.toLowerCase().includes(inputSearch.toLowerCase())
-        )
-    }
+	let filteredItens = []
+	if (inputSearch !== '') {
+		filteredItens = allProducts.filter(product =>
+			product.name.toLowerCase().includes(inputSearch.toLowerCase())
+		)
+	}
 
-    const searchAppearsDisappears = () => {
-        setSearch(false)
-    }
+	const searchAppearsDisappears = () => {
+		setSearch(false)
+	}
 
-    const handleInputSearch = (e) => {
-        setInputSearch(e.target.value)
-    }
+	const handleInputSearch = (e) => {
+		setInputSearch(e.target.value)
+	}
 
-    return (
-        <S.SearchWrapper>
+	return (
+		<>
+			<Backdrop />
+			<div className="search" data-testid="search">
 
-            <S.SearchHeader>
-                <S.IconLink href='#' onClick={searchAppearsDisappears}>
-                    <i className="fa fa-arrow-right" aria-hidden="true"></i>
-                </S.IconLink>
-                <h4>Buscar produtos</h4>
-                <div></div>
-            </S.SearchHeader>
+				<header className="search__header">
+					<span className="search__icon-link"
+						data-testid="icon"
+						onClick={searchAppearsDisappears}>
+						<i className="fa fa-arrow-right" aria-hidden="true"></i>
+					</span>
+					<h4>Buscar produtos</h4>
+					<div></div>
+				</header>
 
-            <S.SearchMain>
-                <S.Container>
-                    <S.SearchInput
-                        value={inputSearch}
-                        onChange={handleInputSearch}
-                        placeholder="Buscar..."
-                    />
-                </S.Container>
-            </S.SearchMain>
+				<main className="search__main">
+					<div className="search__container">
+						<input className="search__input" data-testid="input"
+							value={inputSearch}
+							onChange={handleInputSearch}
+							placeholder="Buscar..."
+						/>
+					</div>
+				</main>
 
-            <S.SearchFooter>
-                <S.Container>
-                    {filteredItens.length === 0
-                        ?
-                        <S.Quantity>
-                            Nenhum item encontrado
-                        </S.Quantity>
-                        :
-                        <S.Quantity>
-                            {filteredItens.length} itens
-                        </S.Quantity>
-                    }
+				<footer className="search__footer">
+					<div className="search__container">
+						{filteredItens.length === 0
+							?
+							<p className="search__quantity" data-testid="search-any">
+								Nenhum item encontrado
+                        </p>
+							:
+							<p className="search__quantity" data-testid="search-any">
+								{filteredItens.length} itens
+                        </p>
+						}
 
-                    {filteredItens.map(product => (
-                        <ProductInSearch key={product.id} product={product} />
-                    ))}
-                </S.Container>
-            </S.SearchFooter>
+						{filteredItens.map((product, index) => (
+							<ProductInSearch 
+								key={index} 
+								product={product} 
+								setSearch={setSearch}
+								setProductDetail={setProductDetail}
+								goToDetail={goToDetail}
+							/>
+						))}
+					</div>
+				</footer>
 
-        </S.SearchWrapper>
-    )
+			</div>
+		</>
+	)
 }
 
 const mapStateToProps = (state) => ({
-    allProducts: state.products.allProducts
+	allProducts: state.products.allProducts
 })
 
 const mapDispatchToProps = dispatch => ({
-    setSearch: (appears) => dispatch(setSearch(appears))
+	setSearch: (appears) => dispatch(setSearch(appears)),
+    setProductDetail: (product) => dispatch(setProductDetail(product)),
+	goToDetail: () => dispatch(push(routes.detail))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search)

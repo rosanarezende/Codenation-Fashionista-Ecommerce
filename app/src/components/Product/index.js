@@ -5,9 +5,9 @@ import { routes } from "../../utils/constants"
 
 import { setProductDetail } from '../../actions/products'
 
-import * as S from './styles'
+import './index.css'
 
-function Product(props) {
+export function Product(props) {
 
     const { product, goToDetail, setProductDetail } = props
 
@@ -17,27 +17,31 @@ function Product(props) {
     }
 
     return (
-        <S.ProductCard onClick={() => openProductDetail(product)}>
+        <div className="product" data-testid="product"
+            onClick={() => openProductDetail(product)}>
 
-            {product.image !== ""
-                ? <S.Image src={product.image} alt={product.name} />
-                : <S.Image src="https://via.placeholder.com/470x594/FFFFFF/?text=Imagem+Indispon%C3%ADvel" alt={product.name} />
-            }
+            <img className="product__img"
+                src={product.image !== ""
+                    ? product.image
+                    : "https://via.placeholder.com/470x594/FFFFFF/?text=Imagem+Indispon%C3%ADvel"
+                }
+                alt={product.name}
+            />
 
             {product.on_sale &&
-                <S.Stamp>{product.discount_percentage}</S.Stamp>
+                <div className="product__stamp">{product.discount_percentage}</div>
             }
 
             <div>
                 <h3>{product.name}</h3>
-                <S.Price>
+                <div className="product__price">
                     {product.on_sale &&
-                        <S.BeforePrice>{product.regular_price}</S.BeforePrice>
+                        <span className="product__before-price">{product.regular_price}</span>
                     }
                     <span>{product.actual_price}</span>
-                </S.Price>
+                </div>
             </div>
-        </S.ProductCard>
+        </div>
     )
 }
 

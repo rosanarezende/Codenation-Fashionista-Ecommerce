@@ -3,39 +3,45 @@ import { connect } from 'react-redux'
 
 import { getProducts } from '../../actions/products'
 
-import * as S from './styles.js'
+import './index.css'
 
 import Product from '../Product';
 
-function Main(props) {
-    const { allProducts, getProducts } = props
+export function Main(props) {
+    const { 
+        allProducts, 
+        getProducts 
+    } = props
+
+    // // testando error boundary
+    // const allProducts = "oi"
 
     useEffect(() => {
         getProducts()
     }, [getProducts])
 
     return (
-        <S.MainWrapper>
+        <main className="main" data-testid="main">
 
-            <S.ProductsContent>
+            <div className="main__container">
 
-                {allProducts.length > 0 &&
-                    <S.Quantity>{allProducts.length} itens</S.Quantity>
+                {allProducts?.length > 0 &&
+                    <p className="main__text">{allProducts.length} itens</p>
                 }
 
-                {allProducts.length === 0
-                    ? <div>Carregando...</div>
+                {allProducts?.length === 0
+                    ? <div className="main__loading">Carregando...</div>
                     :
-                    <S.ProductsGrid>
-                        {allProducts.map((product, index) => (
+                    <div className="main__products-grid">
+                        {allProducts?.map((product, index) => (
                             <Product product={product} key={index} />
                         ))}
-                    </S.ProductsGrid>
+                    </div>
                 }
 
-            </S.ProductsContent>
+            </div>
 
-        </S.MainWrapper>
+        </main>
     );
 }
 

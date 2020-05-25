@@ -6,11 +6,11 @@ import { routes } from "../../utils/constants"
 import { setShoppingCart, setAllItensInShoppingCart } from '../../actions/shoppingCart'
 import { setSearch } from '../../actions/search'
 
+import './index.css'
 
-import * as S from './styles.js'
-
-function Header(props) {
+export function Header(props) {
   const {setShoppingCart, setSearch, allItensInShoppingCart, goToHome, setAllItensInShoppingCart } = props
+  // console.log(allItensInShoppingCart)
 
   useEffect(() => {   
       const noEstadodoCarrinho = localStorage.getItem('carrinho')
@@ -28,23 +28,21 @@ function Header(props) {
   }
 
   return (
-    <S.HeaderWrapper>
-      <S.HeaderNavbar>
-        <h1
-          onClick={() => goToHome()}
-        >FASHONISTA</h1>
+    <header className="header" data-testid="header">
+      <nav className="header__navbar">
+        <h1 className="header__title" onClick={() => goToHome()} >FASHONISTA</h1>
 
         <div>
-            <S.IconSearch href='#' onClick={searchAppearsDisappears}>
+            <span className="header__icon" onClick={searchAppearsDisappears}>
               <i className="fa fa-search" aria-hidden="true"></i>
-            </S.IconSearch>
-            <S.IconCart href='#' onClick={shoppingCartAppearsDisappears}>
+            </span>
+            <span className="header__icon header__icon--cart" onClick={shoppingCartAppearsDisappears}>
               <i className="fa fa-shopping-basket" aria-hidden="true"></i>
-              <S.Badge>{allItensInShoppingCart.length}</S.Badge>
-            </S.IconCart>
+              <span className="header__badge">{allItensInShoppingCart.length}</span>
+            </span>
         </div>
-      </S.HeaderNavbar>
-    </S.HeaderWrapper>
+      </nav>
+    </header>
   );
 }
 

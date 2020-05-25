@@ -1,8 +1,8 @@
 import React from 'react'
-import * as S from './styles'
+import './index.css'
 
 function Backdrop(){
-    return <S.BackdropWrapper/>
+    return <div className="backdrop" data-testid="backdrop"/>
 }
 
 export default Backdrop

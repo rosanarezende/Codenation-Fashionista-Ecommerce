@@ -1,6 +1,6 @@
 import React from 'react'
 
-import * as S from './styles'
+import './index.css'
 
 function ProductInCart(props) {
 	const { product, removeProductFromCart, changeQuantity } = props
@@ -26,53 +26,60 @@ function ProductInCart(props) {
 	}
 
 	return (
-		<S.ProductInCartWrapper>
+		<div className="product-in-cart" data-testid="product-in-cart">
 
-			<S.InternalDivisionLeft>
+			<div className="product-in-cart__left">
 
-				{product.image
-					?
-					<S.Image src={product.image} alt={product.name} />
-					:
-					<S.Image src="https://via.placeholder.com/470x594/FFFFFF/?text=Imagem+Indispon%C3%ADvel" alt={product.name} />
-				}
+				<img className="product-in-cart__img"
+					src={product.image
+						? product.image
+						: "https://via.placeholder.com/470x594/FFFFFF/?text=Imagem+Indispon%C3%ADvel"
+					}
+					alt={product.name}
+				/>
 
-				<S.Remove onClick={() => removeItem(product.id)}>Remover item</S.Remove>
+				<p className="product-in-cart__remove" 
+					onClick={() => removeItem(product.id)}>Remover item</p>
 
-			</S.InternalDivisionLeft>
+			</div>
 
-			<S.InternalDivisionCenter>
-				<h3>{product.name.toUpperCase()}</h3>
-				<S.TextGrey>Tam: {product.size}</S.TextGrey>
+			<div className="product-in-cart__center">
+				<h4>{product.name.toUpperCase()}</h4>
+				<p className="product-in-cart__text-grey">Tam: {product.size}</p>
 
-				<S.QuantityContainer>
+				<div className="product-in-cart__quantity-container">
 					{product.quantity === 1
 						?
-						<S.Button>
+						<button className="product-in-cart__button">
 							<i className="fa fa-minus" aria-hidden="true"></i>
-						</S.Button>
+						</button>
 						:
-						<S.Button onClick={() => onClickRemoveQuantity(product.id)}>
+						<button className="product-in-cart__button" 
+							onClick={() => onClickRemoveQuantity(product.id)}>
 							<i className="fa fa-minus" aria-hidden="true"></i>
-						</S.Button>
+						</button>
 					}
 					
-					<S.Quantity>{product.quantity}</S.Quantity>
+					<span className="product-in-cart__quantity">
+						{product.quantity}
+					</span>
 					
-					<S.Button onClick={() => onClickAddQuantity(product.id)}>
+					<button className="product-in-cart__button" 
+						onClick={() => onClickAddQuantity(product.id)}>
 						<i className="fa fa-plus" aria-hidden="true"></i>
-					</S.Button>
-				</S.QuantityContainer>
+					</button>
+				</div>
 
-			</S.InternalDivisionCenter>
+			</div>
 
-			<S.InternalDivisionRigth>
-				<h3>{product.actual_price}</h3>
-				<S.TextGrey>{product.installments}</S.TextGrey>
+			<div className="product-in-cart__right">
+				<h4>{product.actual_price}</h4>
+				<p className="product-in-cart__text-grey">
+					{product.installments}
+				</p>
+			</div>
 
-			</S.InternalDivisionRigth>
-
-		</S.ProductInCartWrapper>
+		</div>
 	)
 }
 
