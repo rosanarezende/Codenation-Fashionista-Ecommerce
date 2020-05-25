@@ -5,8 +5,8 @@ import './index.css'
 
 import { setShoppingCart, setAllItensInShoppingCart, removeProductFromCart, changeQuantity } from '../../actions/shoppingCart'
 
-import ProductInCart from '../ProductInCart'
-import Backdrop from '../Backdrop'
+import ProductInCart from '../../components/ProductInCart'
+import Backdrop from '../../components/Backdrop'
 
 export function ShoppingCart(props) {
 	const { setShoppingCart, allItensInShoppingCart, removeProductFromCart, changeQuantity } = props

@@ -5,7 +5,7 @@ import { getProducts } from '../../actions/products'
 
 import './index.css'
 
-import Product from '../Product';
+import Product from '../../components/Product';
 
 export function Main(props) {
     const { 

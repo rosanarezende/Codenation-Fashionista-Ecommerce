@@ -1,15 +1,16 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
+import { push } from 'connected-react-router'
+import { routes } from '../../utils/constants'
 
 import './index.css'
 
 import { setSearch } from '../../actions/search'
 import { setProductDetail } from '../../actions/products'
 
-import ProductInSearch from '../ProductInSearch'
-import Backdrop from '../Backdrop'
-import { push } from 'connected-react-router'
-import { routes } from '../../utils/constants'
+import ProductInSearch from '../../components/ProductInSearch'
+import Backdrop from '../../components/Backdrop'
+
 
 export function Search(props) {
 	const { allProducts, setSearch, setProductDetail, goToDetail } = props

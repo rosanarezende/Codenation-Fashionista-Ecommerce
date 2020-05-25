@@ -1,19 +1,20 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
+import { routes } from '../../utils/constants'
+import { push } from 'connected-react-router'
 
 import { setSelectedSize } from '../../actions/products'
 import { addProductToCart } from "../../actions/shoppingCart"
 
 import './index.css'
 
-import Header from '../../components/Header'
-import ShoppingCart from '../../components/ShoppingCart'
-import Search from '../../components/Search'
+import ErrorBoundary from '../../containers/ErrorBoundary'
+import Header from '../../containers/Header';
+import Search from '../../containers/Search';
+import ShoppingCart from '../../containers/ShoppingCart'
+
 import DetailImage from '../../components/DetailImage'
 import DetailText from '../../components/DetailText'
-import ErrorBoundary from '../ErrorBoundary'
-import { routes } from '../../utils/constants'
-import { push } from 'connected-react-router'
 
 export function DetailPage(props) {
 	const {

@@ -1,11 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import Header from '../../components/Header';
-import Main from '../../components/Main';
-import ShoppingCart from '../../components/ShoppingCart/index.js';
-import Search from '../../components/Search';
-import ErrorBoundary from '../ErrorBoundary';
+import ErrorBoundary from '../../containers/ErrorBoundary'
+import Header from '../../containers/Header';
+import Main from '../../containers/Main';
+import Search from '../../containers/Search';
+import ShoppingCart from '../../containers/ShoppingCart/index.js';
 
 function HomePage(props) {
 
@@ -16,7 +16,7 @@ function HomePage(props) {
             <Header />
             <Main />
             {shoppingCartAppears && <ShoppingCart />}
-            { searchAppears && <Search/>}
+            {searchAppears && <Search />}
         </ErrorBoundary>
     );
 }
