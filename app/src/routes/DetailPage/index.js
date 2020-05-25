@@ -30,7 +30,9 @@ export function DetailPage(props) {
 		localStorage.setItem('carrinho', estadoComoString)
 	})
 
-	// ter um modo de limpar esses detalhes quando eu saio da página
+	useEffect(() => {
+		return () => setSelectedSize("") // limpa detalhes quando saio da página
+	}, [])
 
 	return (
 		<ErrorBoundary>
