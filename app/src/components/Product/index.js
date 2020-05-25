@@ -20,13 +20,16 @@ export function Product(props) {
         <div className="product" data-testid="product"
             onClick={() => openProductDetail(product)}>
 
-            <img className="product__img"
-                src={product.image !== ""
-                    ? product.image
-                    : "https://via.placeholder.com/470x594/FFFFFF/?text=Imagem+Indispon%C3%ADvel"
-                }
-                alt={product.name}
-            />
+                <img className="product__img"
+                    src={product.image !== ""
+                        ? product.image
+                        : "https://via.placeholder.com/470x594/FFFFFF/?text=Imagem+Indispon%C3%ADvel"
+                    }
+                    alt={product.name}
+                />
+                <figcaption className="product__figcaption">
+                    CLIQUE PARA VER MAIS DETALHES
+                </figcaption>
 
             {product.on_sale &&
                 <div className="product__stamp">{product.discount_percentage}</div>
