@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import './index.css'
@@ -6,37 +6,34 @@ import './index.css'
 import { setShoppingCart, setAllItensInShoppingCart, removeProductFromCart, changeQuantity } from '../../actions/shoppingCart'
 
 import ProductInCart from '../ProductInCart'
+import Backdrop from '../Backdrop'
 
-class ShoppingCart extends React.Component {
+function ShoppingCart(props) {
+	const { setShoppingCart, allItensInShoppingCart, removeProductFromCart, changeQuantity } = props
 
-	componentDidMount() {
+	useEffect(() => {
 		const noEstadodoCarrinho = localStorage.getItem('carrinho')
 		const novoEstado = JSON.parse(noEstadodoCarrinho)
 		if (novoEstado) {
-			this.props.setAllItensInShoppingCart(novoEstado)
-		}
-	}
-
-	// acho que preciso manter por conta do remover
-	componentDidUpdate() {
-		const estadoComoString = JSON.stringify(this.props.allItensInShoppingCart)
-		localStorage.setItem('carrinho', estadoComoString)
-	}
-
-
-	render() {
-		const { setShoppingCart, allItensInShoppingCart, removeProductFromCart, changeQuantity } = this.props
-
-		const shoppingCartAppearsDisappears = () => {
-			setShoppingCart(false)
+			setAllItensInShoppingCart(novoEstado)
 		}
 
-		const subtotal = allItensInShoppingCart.reduce((prevVal, product) => {
-			const formattedValue = product.actual_price.toString().substr(3).replace(",", ".")
-			return prevVal + (formattedValue * product.quantity)
-		}, 0)
+		const estadoComoString = JSON.stringify(allItensInShoppingCart)
+		return () => localStorage.setItem('carrinho', estadoComoString)
+	}, [allItensInShoppingCart])
 
-		return (
+	const shoppingCartAppearsDisappears = () => {
+		setShoppingCart(false)
+	}
+
+	const subtotal = allItensInShoppingCart.reduce((prevVal, product) => {
+		const formattedValue = product.actual_price.toString().substr(3).replace(",", ".")
+		return prevVal + (formattedValue * product.quantity)
+	}, 0)
+
+	return (
+		<>
+			<Backdrop />
 			<div className="shopping-cart">
 
 				<header className="shopping-cart__header">
@@ -52,8 +49,8 @@ class ShoppingCart extends React.Component {
 
 					<div className="shopping-cart__container">
 						{allItensInShoppingCart.map((product, index) => (
-							<ProductInCart key={index} product={product} 
-								removeProductFromCart={removeProductFromCart} 
+							<ProductInCart key={index} product={product}
+								removeProductFromCart={removeProductFromCart}
 								changeQuantity={changeQuantity}
 							/>
 						))}
@@ -67,8 +64,8 @@ class ShoppingCart extends React.Component {
 				</footer>
 
 			</div>
-		)
-	}
+		</>
+	)
 }
 
 const mapStateToProps = (state) => ({
