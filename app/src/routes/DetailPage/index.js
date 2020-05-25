@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { routes } from '../../utils/constants'
-import { push } from 'connected-react-router'
 
 import { setSelectedSize } from '../../actions/products'
 import { addProductToCart } from "../../actions/shoppingCart"
@@ -24,8 +22,7 @@ export function DetailPage(props) {
 		selectedSize,
 		setSelectedSize,
 		addProductToCart,
-		allItensInShoppingCart,
-		goToHome
+		allItensInShoppingCart
 	} = props
 
 	useEffect(() => {
@@ -48,7 +45,6 @@ export function DetailPage(props) {
 						selectedSize={selectedSize}
 						setSelectedSize={setSelectedSize}
 						addProductToCart={addProductToCart}
-						goToHome={goToHome}
 					/>
 				</div>
 			}
@@ -74,8 +70,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
 	setSelectedSize: (size) => dispatch(setSelectedSize(size)),
-	addProductToCart: (product) => dispatch(addProductToCart(product)),
-	goToHome: () => dispatch(push(routes.home))
+	addProductToCart: (product) => dispatch(addProductToCart(product))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(DetailPage)

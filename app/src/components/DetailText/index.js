@@ -7,20 +7,22 @@ function DetailText(props) {
 		product,
 		selectedSize,
 		setSelectedSize,
-		addProductToCart,
-		goToHome
+		addProductToCart
 	} = props
 
 	const [msgAppears, setMsgAppears] = useState(false)
+	const [msg2Appears, setMsg2Appears] = useState(false)
 
 	function onClickSize(sku) {
 		setSelectedSize(sku)
 		setMsgAppears(false)
+		setMsg2Appears(false)
 	}
 
 	async function addToCart() {
 		if (selectedSize === "") {
 			setMsgAppears(true)
+			setMsg2Appears(false)
 		} else {
 			const sizeFiltered = product.sizes.filter(size => size.sku === selectedSize)
 			const size = sizeFiltered[0] && sizeFiltered[0].size
@@ -34,8 +36,8 @@ function DetailText(props) {
 				quantity: 1
 			}
 			await addProductToCart(productGoToCart)
-			setSelectedSize("")
-			goToHome()
+			setSelectedSize("")		
+			setMsg2Appears(true)
 		}
 	}
 
@@ -81,6 +83,10 @@ function DetailText(props) {
 								</button>
 						})}
 			</div>
+
+			{msg2Appears &&
+					<p className="detail__add-product">Produto adicionado ao carrinho!</p>
+			}
 
 			<button className="detail__add-button" onClick={addToCart}>
 				Adicionar à Sacola
