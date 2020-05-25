@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 
 import Header from '../../components/Header';
 import Main from '../../components/Main';
-import Backdrop from '../../components/Backdrop';
 import ShoppingCart from '../../components/ShoppingCart/index.js';
 import Search from '../../components/Search';
 import ErrorBoundary from '../ErrorBoundary';
@@ -16,20 +15,8 @@ function HomePage(props) {
         <ErrorBoundary>
             <Header />
             <Main />
-            {shoppingCartAppears &&
-                <>
-                    <Backdrop/>
-                    <ShoppingCart />
-                </>
-            }
-
-            { searchAppears &&
-                <>
-                    <Backdrop/>
-                    <Search/>
-                </>
-            }
-
+            {shoppingCartAppears && <ShoppingCart />}
+            { searchAppears && <Search/>}
         </ErrorBoundary>
     );
 }

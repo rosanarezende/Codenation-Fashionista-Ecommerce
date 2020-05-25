@@ -17,12 +17,12 @@ import { routes } from '../../utils/constants'
 import { push } from 'connected-react-router'
 
 export function DetailPage(props) {
-	const { 
-		product, 
-		shoppingCartAppears, 
+	const {
+		product,
+		shoppingCartAppears,
 		searchAppears,
-		selectedSize, 
-		setSelectedSize, 
+		selectedSize,
+		setSelectedSize,
 		addProductToCart,
 		allItensInShoppingCart,
 		goToHome
@@ -53,19 +53,12 @@ export function DetailPage(props) {
 				</div>
 			}
 
-			{shoppingCartAppears &&
-				<>
-					<Backdrop />
-					<ShoppingCart data-testid="shop-appears"/>
-				</>
-			}
+			{shoppingCartAppears && 
+				<ShoppingCart data-testid="shop-appears" />}
 
 			{searchAppears &&
-				<>
-					<Backdrop />
-					<Search data-testid="search-appears" className="search-appears"/>
-				</>
-			}
+				<Search data-testid="search-appears" className="search-appears" />}
+		
 		</ErrorBoundary>
 	)
 }
