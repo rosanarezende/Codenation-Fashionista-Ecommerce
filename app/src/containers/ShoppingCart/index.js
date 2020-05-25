@@ -19,7 +19,7 @@ export function ShoppingCart(props) {
 		}
 
 		const estadoComoString = JSON.stringify(allItensInShoppingCart)
-		return () => localStorage.setItem('carrinho', estadoComoString)
+		localStorage.setItem('carrinho', estadoComoString)
 	}, [allItensInShoppingCart])
 
 	const shoppingCartAppearsDisappears = () => {
