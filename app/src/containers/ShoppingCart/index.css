@@ -39,8 +39,9 @@
 .shopping-cart__main{
     background-color: #f9f9f9;
     width: 100%;
-    height: 90vh;
+    height: 88vh;
     overflow: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 @media screen and (max-width: 1200px) {
@@ -52,21 +53,14 @@
 .shopping-cart__container{
     display: flex;
     flex-direction: column;
-    height: 90%;
-    width: 90%;
-    margin: 1rem;
-}
-
-@media screen and (max-width: 1200px) {
-    .shopping-cart__container{
-        width: 85%;
-    }
+    width: 95%;
+    margin: 1rem auto;
 }
 
 .shopping-cart__footer{
     background-color: black;
     color: white;
-    height: 5vh;
+    height: 6vh;
     display: flex;
     align-items: center;
     justify-content: center;
