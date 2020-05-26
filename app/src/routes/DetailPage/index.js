@@ -32,7 +32,7 @@ export function DetailPage(props) {
 
 	useEffect(() => {
 		return () => setSelectedSize("") // limpa detalhes quando saio da página
-	}, [])
+	}, [setSelectedSize])
 
 	return (
 		<ErrorBoundary>
