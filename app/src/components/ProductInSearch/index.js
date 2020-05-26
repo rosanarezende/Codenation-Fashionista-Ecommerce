@@ -30,7 +30,7 @@ function ProductInSearch(props){
             </div>
 
             <div className="product-in-search__right">
-                <h3>{product.regular_price}</h3>
+                <h3>{product.actual_price}</h3>
                 <p className="product-in-search__text-grey">
                     {product.installments}
                 </p>

@@ -11,20 +11,37 @@ import { setProductDetail } from '../../actions/products'
 import ProductInSearch from '../../components/ProductInSearch'
 import Backdrop from '../../components/Backdrop'
 
-
 export function Search(props) {
 	const { allProducts, setSearch, setProductDetail, goToDetail } = props
-	const [inputSearch, setInputSearch] = useState('')
+	const [inputSearch, setInputSearch] = useState(undefined)
+	const [minValue, setMinValue] = useState(undefined)
+	const [maxValue, setMaxValue] = useState(undefined)
 
 	let filteredItens = []
-	if(inputSearch !== "") {
-		filteredItens = allProducts.filter(product => (
-			product.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").includes(inputSearch.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ""))
-	))}
+
+	let filteredMin = allProducts.filter(product => {
+		const value = Number(product.actual_price.toString().substr(3).replace(",", "."))
+		return minValue ? value >= minValue : true
+	})
+
+	let filteredMax = filteredMin.filter(product => {
+		const value = Number(product.actual_price.toString().substr(3).replace(",", "."))
+		return maxValue ? value <= maxValue : true
+	})
+
+	let filteredSearch = filteredMax.filter(product => {
+		const productName = product.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "")
+		const input = inputSearch?.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "")
+		return inputSearch ? productName.includes(input) : true
+	}) 
+	
+	if(inputSearch || minValue || maxValue) filteredItens = filteredSearch
 	
 	const searchAppearsDisappears = () => setSearch(false)
 	
-	const handleInputSearch = (e) => setInputSearch(e.target.value)
+	const handleInputSearch = e => setInputSearch(e.target.value)
+	const handleInputMin = e => setMinValue(e.target.value)
+	const handleInputMax = e => setMaxValue(e.target.value)
 	
 	return (
 		<>
@@ -48,6 +65,21 @@ export function Search(props) {
 							onChange={handleInputSearch}
 							placeholder="Buscar..."
 						/>
+						<div className="search__inputs-number">
+
+							<input className="search__input-number"
+								type="number"
+								value={minValue}
+								onChange={handleInputMin}
+								placeholder="Valor mínimo"
+							/>
+							<input className="search__input-number"
+								type="number"
+								value={maxValue}
+								onChange={handleInputMax}
+								placeholder="Valor máximo"
+							/>
+						</div>
 					</div>
 				</main>
 
