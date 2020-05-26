@@ -7,7 +7,7 @@ import { routerMiddleware } from 'connected-react-router'
 
 import { generateReducers } from '../../reducers'
 
-import Router from '../../routes/Router';
+import Routes from '../../routes';
 
 const history = createBrowserHistory()
 
@@ -19,7 +19,7 @@ const store = createStore(
 function App() {
   return (
     <Provider store={store}>
-      <Router history={history} />
+      <Routes history={history} />
     </Provider>
   );
 }

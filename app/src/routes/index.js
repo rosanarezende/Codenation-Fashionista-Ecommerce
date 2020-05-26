@@ -2,13 +2,13 @@ import React from 'react';
 import { ConnectedRouter } from 'connected-react-router'
 import { Switch, Route } from 'react-router-dom'
 
-import { routes } from '../../utils/constants'
+import { routes } from '../utils/constants'
 
-import HomePage from '../HomePage';
-import DetailPage from '../DetailPage';
-import NotFound from '../NotFound';
+import HomePage from './HomePage';
+import DetailPage from './DetailPage';
+import NotFound from './NotFound';
 
-function Router(props){
+function Routes(props){
     const { history } = props
     
     return(
@@ -22,4 +22,4 @@ function Router(props){
     )
 }
 
-export default Router
+export default Routes
