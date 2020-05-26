@@ -14,24 +14,18 @@ import Backdrop from '../../components/Backdrop'
 
 export function Search(props) {
 	const { allProducts, setSearch, setProductDetail, goToDetail } = props
-
 	const [inputSearch, setInputSearch] = useState('')
 
 	let filteredItens = []
-	if (inputSearch !== '') {
-		filteredItens = allProducts.filter(product =>
-			product.name.toLowerCase().includes(inputSearch.toLowerCase())
-		)
-	}
-
-	const searchAppearsDisappears = () => {
-		setSearch(false)
-	}
-
-	const handleInputSearch = (e) => {
-		setInputSearch(e.target.value)
-	}
-
+	if(inputSearch !== "") {
+		filteredItens = allProducts.filter(product => (
+			product.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").includes(inputSearch.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ""))
+	))}
+	
+	const searchAppearsDisappears = () => setSearch(false)
+	
+	const handleInputSearch = (e) => setInputSearch(e.target.value)
+	
 	return (
 		<>
 			<Backdrop />
