@@ -10,7 +10,6 @@ import './index.css'
 
 export function Header(props) {
   const {setShoppingCart, setSearch, allItensInShoppingCart, goToHome, setAllItensInShoppingCart } = props
-  // console.log(allItensInShoppingCart)
 
   useEffect(() => {   
       const noEstadodoCarrinho = localStorage.getItem('carrinho')
@@ -20,13 +19,9 @@ export function Header(props) {
       }
   }, [setAllItensInShoppingCart])
 
-  const shoppingCartAppearsDisappears = () => {
-    setShoppingCart(true)
-  }
-  const searchAppearsDisappears = () => {
-    setSearch(true)
-  }
-
+  const shoppingCartAppearsDisappears = () => setShoppingCart(true)
+  const searchAppearsDisappears = () => setSearch(true)
+  
   return (
     <header className="header" data-testid="header">
       <nav className="header__navbar">
@@ -38,7 +33,7 @@ export function Header(props) {
             </span>
             <span className="header__icon header__icon--cart" onClick={shoppingCartAppearsDisappears}>
               <i className="fa fa-shopping-basket" aria-hidden="true"></i>
-              <span className="header__badge">{allItensInShoppingCart.length}</span>
+              <span className="header__badge">{allItensInShoppingCart?.length}</span>
             </span>
         </div>
       </nav>
