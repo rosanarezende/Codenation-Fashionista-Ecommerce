@@ -6,6 +6,7 @@ import { routes } from '../../utils/constants'
 
 import HomePage from '../HomePage';
 import DetailPage from '../DetailPage';
+import NotFound from '../NotFound';
 
 function Router(props){
     const { history } = props
@@ -15,7 +16,7 @@ function Router(props){
             <Switch>
                 <Route exact path={routes.home} component={HomePage}/>
                 <Route exact path={routes.detail} component={DetailPage}/>
-                <Route path="*" component={() => "Página não encontrada"} />
+                <Route path="*" component={NotFound} />
             </Switch>
         </ConnectedRouter>
     )
