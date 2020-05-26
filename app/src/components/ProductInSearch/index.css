@@ -6,13 +6,25 @@
   padding: 0.5rem;
   display: flex;
   justify-content: space-between;
-  height: 20vh;
+  height: 15vh;
 }
 
 .product-in-search__left {
   display: flex;
   flex-direction: column;
   width: 40%;
+}
+
+.product-in-search__img {
+  width: 80%;
+  margin: auto;
+}
+
+@media screen and (max-width: 1200px) {
+  .product-in-search__img {
+    width: 70%;
+    margin: auto;
+  }
 }
 
 .product-in-search__center {
@@ -34,16 +46,6 @@
   width: 40%;
 }
 
-.product-in-search__img {
-  width: 100%;
-}
-
-@media screen and (max-width: 1200px) {
-  .product-in-search__img {
-    width: 70%;
-    margin: auto;
-  }
-}
 
 .product-in-search__text-grey {
   color: grey;
