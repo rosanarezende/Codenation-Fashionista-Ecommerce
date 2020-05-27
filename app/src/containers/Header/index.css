@@ -19,8 +19,9 @@
 
 .header__navbar{
     display: flex;
-    width: 65vw;
+    width: 62vw;
     margin: auto;
+    padding-right: 3vw;
     justify-content: space-between;
     align-items: center;
 }
@@ -28,6 +29,7 @@
 @media screen and (max-width: 1200px) {
     .header__navbar{
         width: 90%;
+        padding-right: 0;
     }
 }
 
@@ -50,17 +52,24 @@
 
 .header__badge{
     position: absolute; 
-  background-color: rgb(255, 0, 0, 0.7);
+  background-color: rgb(255, 0, 0, 0.8);
   color: white;
   top: 0;
   right: 0;
   border-radius: 50px;
   text-align: center;
-  margin-right: -60%;
-  margin-top: -40%;
+  margin-right: -40%;
+  margin-top: -30%;
   padding: 0 0.3rem 0.1rem;
   font-size: 70%;
   min-width:10px;
+}
+
+@media screen and (max-width: 1200px) {
+    .header__badge{
+      margin-right: -60%;
+      margin-top: -40%;
+    }
 }
 
 .header__title{
