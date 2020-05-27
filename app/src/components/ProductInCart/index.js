@@ -44,7 +44,7 @@ function ProductInCart(props) {
 			</div>
 
 			<div className="product-in-cart__center">
-				<h4>{product.name.toUpperCase()}</h4>
+				<h5>{product.name.toUpperCase()}</h5>
 				<p className="product-in-cart__text-grey">Tam: {product.size}</p>
 
 				<div className="product-in-cart__quantity-container">
@@ -73,7 +73,7 @@ function ProductInCart(props) {
 			</div>
 
 			<div className="product-in-cart__right">
-				<h4>{product.actual_price}</h4>
+				<h5>{product.actual_price}</h5>
 				<p className="product-in-cart__text-grey">
 					{product.installments}
 				</p>

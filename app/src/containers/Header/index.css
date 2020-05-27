@@ -19,10 +19,16 @@
 
 .header__navbar{
     display: flex;
-    width: 90%;
+    width: 65vw;
     margin: auto;
     justify-content: space-between;
     align-items: center;
+}
+
+@media screen and (max-width: 1200px) {
+    .header__navbar{
+        width: 90%;
+    }
 }
 
 .header__icon{

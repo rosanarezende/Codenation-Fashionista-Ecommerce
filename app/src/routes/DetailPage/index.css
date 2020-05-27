@@ -1,12 +1,15 @@
 .detail {
   display: flex;
-  margin-top: 6vh;
+  width: 65vw;
+  margin: 6vh auto 0;
   padding: 2rem 5%;
+
 }
 
 @media screen and (max-width: 1200px) {
   .detail {
     flex-direction: column;
     padding: 1rem 5%;
+    width: 90%;
   }
 }

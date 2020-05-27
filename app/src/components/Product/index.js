@@ -36,7 +36,7 @@ export function Product(props) {
             }
 
             <div>
-                <h3>{product.name}</h3>
+                <h4>{product.name}</h4>
                 <div className="product__price">
                     {product.on_sale &&
                         <span className="product__before-price">{product.regular_price}</span>

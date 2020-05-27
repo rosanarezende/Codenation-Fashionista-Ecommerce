@@ -13,8 +13,14 @@
 .main__container{
     display: flex;
     flex-direction: column;
-    width: 90%;
+    width: 65vw;
     margin: 0 auto;
+}
+
+@media screen and (max-width: 1200px) {
+    .main__container{
+        width: 90%;
+    }
 }
 
 .main__loading{
@@ -24,9 +30,11 @@
 
 .main__text{
     margin: 1rem 0;
+    color: grey;
 }
 
 .main__products-grid{
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
