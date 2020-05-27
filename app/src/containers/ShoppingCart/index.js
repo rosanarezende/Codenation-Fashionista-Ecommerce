@@ -48,13 +48,19 @@ export function ShoppingCart(props) {
 				<main className="shopping-cart__main">
 
 					<div className="shopping-cart__container">
-						{allItensInShoppingCart.map((product, index) => (
-							<ProductInCart key={index} product={product}
-								removeProductFromCart={removeProductFromCart}
-								changeQuantity={changeQuantity}
-							/>
-						))}
-
+						{allItensInShoppingCart.length > 0
+							? allItensInShoppingCart.map((product, index) => (
+								<ProductInCart key={index} product={product}
+									removeProductFromCart={removeProductFromCart}
+									changeQuantity={changeQuantity}
+								/>
+							))
+							: (
+								<div className="shopping-cart__empty">
+									<h4 className="shopping-cart__empty-text">Sua sacola está vazia :/</h4>
+								</div>
+							)
+						}
 					</div>
 
 				</main>

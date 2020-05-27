@@ -87,9 +87,9 @@ export function Search(props) {
 					<div className="search__container">
 						{filteredItens.length === 0
 							?
-							<p className="search__quantity" data-testid="search-any">
-								Nenhum item encontrado
-                        </p>
+							<div className="search__empty" data-testid="search-any">
+								<h4 className="search__empty-text">Nenhum item encontrado :/</h4>
+                        	</div>
 							:
 							<p className="search__quantity" data-testid="search-any">
 								{filteredItens.length} itens

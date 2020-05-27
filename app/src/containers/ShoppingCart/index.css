@@ -57,6 +57,17 @@
     margin: 1rem auto;
 }
 
+.shopping-cart__empty{
+    display: flex;
+    height: 80vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.shopping-cart__empty-text{
+    color: gray;
+}
+
 .shopping-cart__footer{
     background-color: black;
     color: white;

@@ -4,15 +4,12 @@ import { connect } from 'react-redux'
 import { setSelectedSize } from '../../actions/products'
 import { addProductToCart } from "../../actions/shoppingCart"
 
-import './index.css'
-
 import ErrorBoundary from '../../containers/ErrorBoundary'
 import Header from '../../containers/Header';
 import Search from '../../containers/Search';
 import ShoppingCart from '../../containers/ShoppingCart'
 
-import DetailImage from '../../components/DetailImage'
-import DetailText from '../../components/DetailText'
+import { Detail } from '../../containers/Detail'
 
 export function DetailPage(props) {
 	const {
@@ -31,7 +28,7 @@ export function DetailPage(props) {
 	})
 
 	useEffect(() => {
-		return () => setSelectedSize("") // limpa detalhes quando saio da página
+		return () => setSelectedSize("")
 	}, [setSelectedSize])
 
 	return (
@@ -39,24 +36,20 @@ export function DetailPage(props) {
 			<Header />
 
 			{product &&
-				<div className="detail" data-testid="detail">
-					<DetailImage product={product} />
-
-					<DetailText
-						product={product}
-						selectedSize={selectedSize}
-						setSelectedSize={setSelectedSize}
-						addProductToCart={addProductToCart}
-					/>
-				</div>
+				<Detail
+					product={product}
+					selectedSize={selectedSize}
+					setSelectedSize={setSelectedSize}
+					addProductToCart={addProductToCart}
+				/>
 			}
 
-			{shoppingCartAppears && 
+			{shoppingCartAppears &&
 				<ShoppingCart data-testid="shop-appears" />}
 
 			{searchAppears &&
 				<Search data-testid="search-appears" className="search-appears" />}
-		
+
 		</ErrorBoundary>
 	)
 }
@@ -66,7 +59,6 @@ const mapStateToProps = state => ({
 	shoppingCartAppears: state.shoppingCart.shoppingCartAppears,
 	searchAppears: state.search.searchAppears,
 	selectedSize: state.products.selectedSize,
-
 	allItensInShoppingCart: state.shoppingCart.allItensInShoppingCart,
 })
 
@@ -92,7 +84,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(DetailPage)
 //         const view = render(<DetailPage product={mockProduct}/>)
 //         getByTestId = view.getByTestId
 //     })
-    
+
 //     it("should render ErrorBoundary correctly", async () => {
 //         const erro = getByTestId("erro")        
 //         expect(erro).toHaveClass("erro")
