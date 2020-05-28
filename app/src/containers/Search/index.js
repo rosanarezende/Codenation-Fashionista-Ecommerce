@@ -16,6 +16,7 @@ export function Search(props) {
 	const [inputSearch, setInputSearch] = useState(undefined)
 	const [minValue, setMinValue] = useState(undefined)
 	const [maxValue, setMaxValue] = useState(undefined)
+	const [sale, setSale] = useState(false)
 
 	let filteredItens = []
 
@@ -34,14 +35,19 @@ export function Search(props) {
 		const input = inputSearch?.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "")
 		return inputSearch ? productName.includes(input) : true
 	}) 
-	
-	if(inputSearch || minValue || maxValue) filteredItens = filteredSearch
+
+	let filteredSale = filteredSearch.filter(product => {
+		return sale ? product.on_sale === true : true
+	})
+		
+	if(inputSearch || minValue || maxValue || sale) filteredItens = filteredSale
 	
 	const searchAppearsDisappears = () => setSearch(false)
 	
 	const handleInputSearch = e => setInputSearch(e.target.value)
 	const handleInputMin = e => setMinValue(e.target.value)
 	const handleInputMax = e => setMaxValue(e.target.value)
+	const onClickSale = () => setSale(!sale)
 	
 	return (
 		<>
@@ -79,6 +85,11 @@ export function Search(props) {
 								onChange={handleInputMax}
 								placeholder="Valor máximo"
 							/>
+						</div>
+						<div className="search__on-sale">
+							<button onClick={onClickSale} className="search__on-sale-button">
+								{sale ? "Todos" : "Em promoção"}
+							</button>
 						</div>
 					</div>
 				</main>
