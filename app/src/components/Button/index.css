@@ -1,0 +1,45 @@
+.button-add {
+  margin-top: 1rem;
+  padding: 10px;
+  background: black;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid grey;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.button-add:hover {
+  font-weight: bold;
+}
+
+
+.button {
+  width: 35px;
+  height: 35px;
+  margin-right: 10px;
+  border-radius: 50px;
+  background: transparent;
+  border: 1px solid grey;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: black;
+  color: white;
+  border: 1px solid black;
+  font-weight: bold;
+}
+
+
+.button-black {
+  width: 35px;
+  height: 35px;
+  margin-right: 10px;
+  border-radius: 50px;
+  background: black;
+  color: white;
+  border: 1px solid black;
+  font-weight: bold;
+  cursor: pointer;
+}

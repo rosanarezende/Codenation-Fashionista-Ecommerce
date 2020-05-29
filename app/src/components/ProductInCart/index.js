@@ -1,6 +1,7 @@
 import React from 'react'
 
 import './index.css'
+import IconButton from '../IconButton'
 
 function ProductInCart(props) {
 	const { product, removeProductFromCart, changeQuantity } = props
@@ -50,24 +51,27 @@ function ProductInCart(props) {
 				<div className="product-in-cart__quantity-container">
 					{product.quantity === 1
 						?
-						<button className="product-in-cart__button">
-							<i className="fa fa-minus" aria-hidden="true"></i>
-						</button>
+						<IconButton
+							id={product.id}
+							simbol={"minus"}
+						/>
 						:
-						<button className="product-in-cart__button" 
-							onClick={() => onClickRemoveQuantity(product.id)}>
-							<i className="fa fa-minus" aria-hidden="true"></i>
-						</button>
+						<IconButton
+							id={product.id}
+							simbol={"minus"}
+							onClickFunction={onClickRemoveQuantity}
+						/>
 					}
 					
 					<span className="product-in-cart__quantity">
 						{product.quantity}
 					</span>
 					
-					<button className="product-in-cart__button" 
-						onClick={() => onClickAddQuantity(product.id)}>
-						<i className="fa fa-plus" aria-hidden="true"></i>
-					</button>
+					<IconButton
+						id={product.id}
+						simbol={"plus"}
+						onClickFunction={onClickAddQuantity}
+					/>
 				</div>
 
 			</div>

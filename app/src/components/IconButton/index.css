@@ -1,0 +1,17 @@
+.icon-button {
+  background-color: transparent;
+  border: 1px solid black;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+  padding-top: 2px;
+  border-radius: 5px;
+  margin: 0 2px;
+}
+
+.icon-button:hover {
+  background: black;
+  color: white;
+  border: 1px solid black;
+  font-weight: bold;
+}

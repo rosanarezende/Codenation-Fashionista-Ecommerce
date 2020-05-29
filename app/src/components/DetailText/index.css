@@ -30,53 +30,9 @@
   font-size: 0.8em;
 }
 
-.detail__size-button {
-  width: 30px;
-  height: 25px;
-  margin-right: 5px;
-  border-radius: 5px;
-  background: transparent;
-  border: 1px solid grey;
-  cursor: pointer;
-}
-
-.detail__size-button:hover {
-  background: black;
-  color: white;
-  border: 1px solid black;
-  font-weight: bold;
-}
-
-.detail__size-button--black {
-  width: 30px;
-  height: 25px;
-  margin-right: 5px;
-  border-radius: 5px;
-  background: black;
-  color: white;
-  border: 1px solid black;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.detail__add-button {
-  margin-top: 1rem;
-  padding: 10px;
-  background: black;
-  color: white;
-  border-radius: 5px;
-  border: 1px solid grey;
-  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-}
-
 .detail__add-product{
     text-align: center;
     margin: 1em 0;
     color: red;
     font-weight: bold;
-}
-
-.detail__add-button:hover {
-  font-weight: bold;
 }

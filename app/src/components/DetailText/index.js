@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './index.css'
+import Button from '../Button'
 
 function DetailText(props) {
 
@@ -36,7 +37,7 @@ function DetailText(props) {
 				quantity: 1
 			}
 			await addProductToCart(productGoToCart)
-			setSelectedSize("")		
+			setSelectedSize("")
 			setMsg2Appears(true)
 		}
 	}
@@ -66,31 +67,28 @@ function DetailText(props) {
 						.map(information => {
 							return information.sku === selectedSize
 								?
-								<button
-									className="detail__size-button--black"
+								<Button black
 									key={information.sku}
-									onClick={() => onClickSize(information.sku)}
-								>
-									{information.size}
-								</button>
+									information={information}
+									onClickSize={onClickSize}
+								/>
 								:
-								<button
-									className="detail__size-button"
+								<Button
 									key={information.sku}
-									onClick={() => onClickSize(information.sku)}
-								>
-									{information.size}
-								</button>
+									information={information}
+									onClickSize={onClickSize}
+								/>
 						})}
 			</div>
 
 			{msg2Appears &&
-					<p className="detail__add-product">Produto adicionado ao carrinho!</p>
+				<p className="detail__add-product">Produto adicionado ao carrinho!</p>
 			}
 
-			<button className="detail__add-button" onClick={addToCart}>
-				Adicionar à Sacola
-			</button>
+			<Button
+				addToCart={addToCart}
+				text="Adicionar à Sacola"
+			/>
 
 		</div>
 	)
