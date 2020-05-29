@@ -3,14 +3,7 @@ import './index.css'
 import Button from '../Button'
 
 function DetailText(props) {
-
-	const {
-		product,
-		selectedSize,
-		setSelectedSize,
-		addProductToCart
-	} = props
-
+	const { product, selectedSize, setSelectedSize, addProductToCart } = props
 	const [msgAppears, setMsgAppears] = useState(false)
 	const [msg2Appears, setMsg2Appears] = useState(false)
 
@@ -69,24 +62,26 @@ function DetailText(props) {
 								?
 								<Button black
 									key={information.sku}
-									information={information}
-									onClickSize={onClickSize}
+									text={information.size}
 								/>
 								:
 								<Button
 									key={information.sku}
-									information={information}
-									onClickSize={onClickSize}
+									onClickFunctionWhithParam={onClickSize}
+									clickParam={information.sku}
+									text={information.size}
 								/>
 						})}
 			</div>
 
 			{msg2Appears &&
-				<p className="detail__add-product">Produto adicionado ao carrinho!</p>
+				<p className="detail__add-product">
+					Produto adicionado ao carrinho!
+				</p>
 			}
 
-			<Button
-				addToCart={addToCart}
+			<Button add
+				onClickFunction={addToCart}
 				text="Adicionar à Sacola"
 			/>
 

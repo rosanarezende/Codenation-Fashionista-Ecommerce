@@ -3,29 +3,37 @@ import './index.css'
 
 function Button(props) {
     const {
-        addToCart, text,
-        information, black, onClickSize
+        text,
+        add,
+        black,
+        onClickFunction,
+        onClickFunctionWhithParam, clickParam
     } = props
 
     return (
-        <>
-            {addToCart &&
-                <button className="button-add"
-                    onClick={addToCart}
+        onClickFunctionWhithParam ?
+            <button
+                className={black ? "button-black" : add ? "button-add" : "button"}
+                onClick={() => onClickFunctionWhithParam(clickParam)}
+            >
+                {text}
+            </button>
+
+            :
+            onClickFunction ?
+                <button
+                    className={black ? "button-black" : add ? "button-add" : "button"}
+                    onClick={onClickFunction}
                 >
                     {text}
                 </button>
-            }
 
-            {onClickSize &&
+                :
                 <button
-                    className={black ? "button-black" : "button"}
-                    onClick={() => onClickSize(information.sku)}
+                    className={black ? "button-black" : add ? "button-add" : "button"}
                 >
-                    {information.size}
+                    {text}
                 </button>
-            }
-        </>
     )
 }
 
