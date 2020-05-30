@@ -1,14 +1,20 @@
 import React from 'react'
-
+import { useDispatch } from 'react-redux'
+import { push } from 'connected-react-router'
+import { routes } from '../../utils/constants'
 import './index.css'
+import { setProductDetail } from '../../actions/products'
+import { setSearch } from '../../actions/search'
 
 function ProductInSearch(props){
-    const { product, setSearch, setProductDetail, goToDetail } = props
-    
+    const { product } = props
+    const dispatch = useDispatch()
+    const goToDetail = push(routes.detail)
+
     const openProductDetail = async (product) => {
-        await setProductDetail(product)
-        goToDetail()
-        setSearch(false)
+        await dispatch(setProductDetail(product))
+        dispatch(goToDetail)
+        dispatch(setSearch(false))
     }
 
     return(

@@ -1,25 +1,21 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux'
-
+import { useSelector, useDispatch} from 'react-redux'
 import { getProducts } from '../../actions/products'
-
 import './index.css'
-
 import Product from '../../components/Product';
 import Loading from '../../components/Loading';
 
-export function Main(props) {
-    const { allProducts, getProducts } = props
+export function Main() {
+    const allProducts  = useSelector(state => state.products.allProducts)
+    const dispatch = useDispatch()
 
     useEffect(() => {
-        getProducts()
-    }, [getProducts])
+        dispatch(getProducts())
+    }, [dispatch])
 
     return (
         <main className="main" data-testid="main">
-
             <div className="main__container">
-
                 {allProducts?.length > 0 &&
                     <p className="main__text">{allProducts.length} itens</p>
                 }
@@ -33,19 +29,9 @@ export function Main(props) {
                         ))}
                     </div>
                 }
-
             </div>
-
         </main>
     );
 }
 
-const mapStateToProps = (state) => ({
-    allProducts: state.products.allProducts,
-})
-
-const mapDispatchToProps = dispatch => ({
-    getProducts: () => dispatch(getProducts())
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default Main

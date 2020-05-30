@@ -1,29 +1,27 @@
 import React, {useEffect} from 'react';
-import { connect } from 'react-redux'
+import { useSelector, useDispatch} from 'react-redux'
 import { push } from 'connected-react-router'
 import { routes } from "../../utils/constants"
-
 import { setShoppingCart, setAllItensInShoppingCart } from '../../actions/shoppingCart'
 import { setSearch } from '../../actions/search'
-
 import './index.css'
 
-export function Header(props) {
-  const {setShoppingCart, setSearch, allItensInShoppingCart, goToHome, setAllItensInShoppingCart } = props
+export function Header() {
+  const allItensInShoppingCart = useSelector(state => state.shoppingCart.allItensInShoppingCart)
+  const dispatch = useDispatch()
 
   useEffect(() => {   
       const cartContent = JSON.parse(localStorage.getItem('carrinho'))
-		  cartContent && setAllItensInShoppingCart(cartContent)
+		  cartContent && dispatch(setAllItensInShoppingCart(cartContent))
+  }, [dispatch])
 
-  }, [setAllItensInShoppingCart])
-
-  const shoppingCartAppearsDisappears = () => setShoppingCart(true)
-  const searchAppearsDisappears = () => setSearch(true)
+  const shoppingCartAppearsDisappears = () => dispatch(setShoppingCart(true))
+  const searchAppearsDisappears = () => dispatch(setSearch(true))
   
   return (
     <header className="header" data-testid="header">
       <nav className="header__navbar">
-        <h1 className="header__title" onClick={() => goToHome()} >FASHONISTA</h1>
+        <h1 className="header__title" onClick={() => dispatch(push(routes.home))} >FASHONISTA</h1>
 
         <div>
             <span className="header__icon" onClick={searchAppearsDisappears}>
@@ -39,15 +37,4 @@ export function Header(props) {
   );
 }
 
-const mapStateToProps = (state) => ({
-  allItensInShoppingCart: state.shoppingCart.allItensInShoppingCart,
-})
-
-const mapDispatchToProps = dispatch => ({
-  setShoppingCart: (appears) => dispatch(setShoppingCart(appears)),
-  setSearch: (appears) => dispatch(setSearch(appears)),
-  goToHome: () => dispatch(push(routes.home)),
-  setAllItensInShoppingCart: (products) => dispatch(setAllItensInShoppingCart(products))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default Header;
