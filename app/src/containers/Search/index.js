@@ -13,9 +13,9 @@ import Backdrop from '../../components/Backdrop'
 
 export function Search(props) {
 	const { allProducts, setSearch, setProductDetail, goToDetail } = props
-	const [inputSearch, setInputSearch] = useState(undefined)
-	const [minValue, setMinValue] = useState(undefined)
-	const [maxValue, setMaxValue] = useState(undefined)
+	const [inputSearch, setInputSearch] = useState("")
+	const [minValue, setMinValue] = useState("")
+	const [maxValue, setMaxValue] = useState("")
 	const [sale, setSale] = useState(false)
 
 	let filteredItens = []
