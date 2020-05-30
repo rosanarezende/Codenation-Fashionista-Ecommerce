@@ -1,20 +1,8 @@
 import React from 'react';
 import { Provider } from 'react-redux'
-import thunk from "redux-thunk";
-import { createStore, applyMiddleware } from 'redux'
-import { createBrowserHistory } from 'history'
-import { routerMiddleware } from 'connected-react-router'
-
-import { generateReducers } from '../../reducers'
 
 import Routes from '../../routes';
-
-const history = createBrowserHistory()
-
-const store = createStore(
-  generateReducers(history),
-  applyMiddleware(routerMiddleware(history), thunk)
-)
+import { history, store} from "../../store"
 
 function App() {
   return (
