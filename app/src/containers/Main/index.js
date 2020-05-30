@@ -6,15 +6,10 @@ import { getProducts } from '../../actions/products'
 import './index.css'
 
 import Product from '../../components/Product';
+import Loading from '../../components/Loading';
 
 export function Main(props) {
-    const { 
-        allProducts, 
-        getProducts 
-    } = props
-
-    // // testando error boundary
-    // const allProducts = "oi"
+    const { allProducts, getProducts } = props
 
     useEffect(() => {
         getProducts()
@@ -30,7 +25,7 @@ export function Main(props) {
                 }
 
                 {allProducts?.length === 0
-                    ? <div className="main__loading">Carregando...</div>
+                    ? <Loading/>
                     :
                     <div className="main__products-grid">
                         {allProducts?.map((product, index) => (
