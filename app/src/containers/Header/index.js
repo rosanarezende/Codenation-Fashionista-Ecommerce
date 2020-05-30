@@ -12,11 +12,9 @@ export function Header(props) {
   const {setShoppingCart, setSearch, allItensInShoppingCart, goToHome, setAllItensInShoppingCart } = props
 
   useEffect(() => {   
-      const noEstadodoCarrinho = localStorage.getItem('carrinho')
-      const novoEstado = JSON.parse(noEstadodoCarrinho)
-      if (novoEstado) {
-        setAllItensInShoppingCart(novoEstado)
-      }
+      const cartContent = JSON.parse(localStorage.getItem('carrinho'))
+		  cartContent && setAllItensInShoppingCart(cartContent)
+
   }, [setAllItensInShoppingCart])
 
   const shoppingCartAppearsDisappears = () => setShoppingCart(true)

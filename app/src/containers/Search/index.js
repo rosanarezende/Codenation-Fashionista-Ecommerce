@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { push } from 'connected-react-router'
 import { routes } from '../../utils/constants'
+import { useClick, useInput } from '../../utils/hooks'
 
 import './index.css'
 
@@ -13,10 +14,11 @@ import Backdrop from '../../components/Backdrop'
 
 export function Search(props) {
 	const { allProducts, setSearch, setProductDetail, goToDetail } = props
-	const [inputSearch, setInputSearch] = useState("")
-	const [minValue, setMinValue] = useState("")
-	const [maxValue, setMaxValue] = useState("")
-	const [sale, setSale] = useState(false)
+	
+	const [inputSearch, setInputSearch] = useInput("")
+	const [minValue, setMinValue] = useInput("")
+	const [maxValue, setMaxValue] = useInput("")
+	const [sale, setSale] = useClick(false)
 
 	let filteredItens = []
 
@@ -43,12 +45,7 @@ export function Search(props) {
 	if(inputSearch || minValue || maxValue || sale) filteredItens = filteredSale
 	
 	const searchAppearsDisappears = () => setSearch(false)
-	
-	const handleInputSearch = e => setInputSearch(e.target.value)
-	const handleInputMin = e => setMinValue(e.target.value)
-	const handleInputMax = e => setMaxValue(e.target.value)
-	const onClickSale = () => setSale(!sale)
-	
+		
 	return (
 		<>
 			<Backdrop />
@@ -68,7 +65,7 @@ export function Search(props) {
 					<div className="search__container">
 						<input className="search__input" data-testid="input"
 							value={inputSearch}
-							onChange={handleInputSearch}
+							onChange={setInputSearch}
 							placeholder="Buscar..."
 						/>
 						<div className="search__inputs-number">
@@ -76,18 +73,18 @@ export function Search(props) {
 							<input className="search__input-number"
 								type="number"
 								value={minValue}
-								onChange={handleInputMin}
+								onChange={setMinValue}
 								placeholder="Valor mínimo"
 							/>
 							<input className="search__input-number"
 								type="number"
 								value={maxValue}
-								onChange={handleInputMax}
+								onChange={setMaxValue}
 								placeholder="Valor máximo"
 							/>
 						</div>
 						<div className="search__on-sale">
-							<button onClick={onClickSale} className="search__on-sale-button">
+							<button onClick={setSale} className="search__on-sale-button">
 								{sale ? "Todos" : "Em promoção"}
 							</button>
 						</div>

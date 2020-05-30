@@ -12,19 +12,14 @@ export function ShoppingCart(props) {
 	const { setShoppingCart, allItensInShoppingCart, removeProductFromCart, changeQuantity } = props
 
 	useEffect(() => {
-		const noEstadodoCarrinho = localStorage.getItem('carrinho')
-		const novoEstado = JSON.parse(noEstadodoCarrinho)
-		if (novoEstado) {
-			setAllItensInShoppingCart(novoEstado)
-		}
-
-		const estadoComoString = JSON.stringify(allItensInShoppingCart)
-		localStorage.setItem('carrinho', estadoComoString)
+		const cartContent = JSON.parse(localStorage.getItem('carrinho'))
+		cartContent && setAllItensInShoppingCart(cartContent)
+		
+		const stateAsString = JSON.stringify(allItensInShoppingCart)
+		localStorage.setItem('carrinho', stateAsString)
 	}, [allItensInShoppingCart])
 
-	const shoppingCartAppearsDisappears = () => {
-		setShoppingCart(false)
-	}
+	const shoppingCartAppearsDisappears = () => setShoppingCart(false)
 
 	const subtotal = allItensInShoppingCart.reduce((prevVal, product) => {
 		const formattedValue = product.actual_price.toString().substr(3).replace(",", ".")
