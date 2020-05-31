@@ -7,7 +7,7 @@ import ProductInSearch from '../../components/ProductInSearch'
 import Backdrop from '../../components/Backdrop'
 
 export function Search() {
-	const allProducts = useSelector(state => state.products.allProducts)
+	const allProducts = useSelector(state => state.products?.allProducts)
 	const dispatch = useDispatch()
 
 	const [inputSearch, setInputSearch] = useInput("")
@@ -17,23 +17,23 @@ export function Search() {
 
 	let filteredItens = []
 
-	let filteredMin = allProducts.filter(product => {
+	let filteredMin = allProducts?.filter(product => {
 		const value = Number(product.actual_price.toString().substr(3).replace(",", "."))
 		return minValue ? value >= minValue : true
 	})
 
-	let filteredMax = filteredMin.filter(product => {
+	let filteredMax = filteredMin?.filter(product => {
 		const value = Number(product.actual_price.toString().substr(3).replace(",", "."))
 		return maxValue ? value <= maxValue : true
 	})
 
-	let filteredSearch = filteredMax.filter(product => {
+	let filteredSearch = filteredMax?.filter(product => {
 		const productName = product.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "")
 		const input = inputSearch?.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "")
 		return inputSearch ? productName.includes(input) : true
 	})
 
-	let filteredSale = filteredSearch.filter(product => {
+	let filteredSale = filteredSearch?.filter(product => {
 		return sale ? product.on_sale === true : true
 	})
 
@@ -88,18 +88,18 @@ export function Search() {
 
 				<footer className="search__footer">
 					<div className="search__container">
-						{filteredItens.length === 0
+						{filteredItens?.length === 0
 							?
 							<div className="search__empty" data-testid="search-any">
 								<h4 className="search__empty-text">Nenhum item encontrado :/</h4>
 							</div>
 							:
 							<p className="search__quantity" data-testid="search-any">
-								{filteredItens.length} itens
+								{filteredItens?.length} itens
                         </p>
 						}
 
-						{filteredItens.map((product, index) => (
+						{filteredItens?.map((product, index) => (
 							<ProductInSearch
 								key={index}
 								product={product}

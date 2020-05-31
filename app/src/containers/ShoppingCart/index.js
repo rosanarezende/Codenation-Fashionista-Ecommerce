@@ -5,8 +5,8 @@ import { setShoppingCart, setAllItensInShoppingCart } from '../../actions/shoppi
 import ProductInCart from '../../components/ProductInCart'
 import Backdrop from '../../components/Backdrop'
 
-export function ShoppingCart(props) {
-	const allItensInShoppingCart = useSelector(state => state.shoppingCart.allItensInShoppingCart)
+export function ShoppingCart() {
+	const allItensInShoppingCart = useSelector(state => state.shoppingCart?.allItensInShoppingCart)
 	const dispatch = useDispatch()
 
 	useEffect(() => {
@@ -19,7 +19,7 @@ export function ShoppingCart(props) {
 
 	const shoppingCartAppearsDisappears = () => dispatch(setShoppingCart(false))
 
-	const subtotal = allItensInShoppingCart.reduce((prevVal, product) => {
+	const subtotal = allItensInShoppingCart?.reduce((prevVal, product) => {
 		const formattedValue = product.actual_price.toString().substr(3).replace(",", ".")
 		return prevVal + (formattedValue * product.quantity)
 	}, 0)
@@ -34,15 +34,15 @@ export function ShoppingCart(props) {
 						<i className="fa fa-arrow-right" aria-hidden="true"></i>
 					</span>
 
-					<h4>Sacola ({allItensInShoppingCart.length}) </h4>
+					<h4>Sacola ({allItensInShoppingCart?.length}) </h4>
 					<div></div>
 				</header>
 
 				<main className="shopping-cart__main">
 
 					<div className="shopping-cart__container">
-						{allItensInShoppingCart.length > 0
-							? allItensInShoppingCart.map(product => (
+						{allItensInShoppingCart?.length > 0
+							? allItensInShoppingCart?.map(product => (
 								<ProductInCart
 									key={product.id}
 									product={product}
@@ -58,7 +58,7 @@ export function ShoppingCart(props) {
 				</main>
 
 				<footer className="shopping-cart__footer">
-					<h4>Subtotal - {subtotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</h4>
+					<h4>Subtotal - {subtotal?.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</h4>
 				</footer>
 
 			</div>

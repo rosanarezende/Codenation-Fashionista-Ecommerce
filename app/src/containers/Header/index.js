@@ -7,7 +7,7 @@ import { setSearch } from '../../actions/search'
 import './index.css'
 
 export function Header() {
-  const allItensInShoppingCart = useSelector(state => state.shoppingCart.allItensInShoppingCart)
+  const allItensInShoppingCart = useSelector(state => state.shoppingCart?.allItensInShoppingCart)
   const dispatch = useDispatch()
 
   useEffect(() => {   

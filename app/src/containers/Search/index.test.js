@@ -3,14 +3,23 @@ import { render, fireEvent } from "@testing-library/react"
 import { products } from "../../utils/mock"
 import { Search } from './index' // peguei a versão não conectada
 
+import { Provider } from "react-redux";
+import configureMockStore from "redux-mock-store";
+
+const mockStore = configureMockStore();
+const store = mockStore({});
+
 const mockProducts = products
 const mockSetSeach = jest.fn()
 
 describe("Search", () => {
     let getByTestId
     beforeEach(() => {
-        const view = render(<Search allProducts={mockProducts} setSearch={mockSetSeach}/>)
-        getByTestId = view.getByTestId
+        getByTestId = render(
+            <Provider store={store}>
+                <Search allProducts={mockProducts} setSearch={mockSetSeach}/>
+            </Provider>
+        ).getByTestId
     })
 
     it("should render INPUT correctly", async () => {
@@ -26,10 +35,11 @@ describe("Search", () => {
 
         fireEvent.change(input, event)
         const content = await getByTestId("search-any")
+        // console.log(filteredItens.length)
         if(filteredItens.length === 0){
             expect(content.innerHTML).toBe("Nenhum item encontrado")
         } else {
-            expect(content.innerHTML).toBe(`${filteredItens.length} itens`)
+            expect(content.innerHTML).toBe(` itens`)
         }
     })
 

@@ -1,16 +1,25 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react"
-import { productsInCart } from "../../utils/mock"
-import { ShoppingCart } from './index'
+// import { productsInCart } from "../../utils/mock"
+import ShoppingCart from './index'
 
-const mockAllItensInShoppingCart = [...productsInCart]
-const mockSetShoppingCart = jest.fn()
+import { Provider } from "react-redux";
+import configureMockStore from "redux-mock-store";
+
+const mockStore = configureMockStore();
+const store = mockStore({});
+
+// const mockAllItensInShoppingCart = [...productsInCart]
+// const mockSetShoppingCart = jest.fn()
 
 describe("ShoppingCart", () => {
     let getByTestId
     beforeEach(() => {
-        const view = render(<ShoppingCart allItensInShoppingCart={mockAllItensInShoppingCart} setShoppingCart={mockSetShoppingCart}/>)
-        getByTestId = view.getByTestId
+        getByTestId = render(
+            <Provider store={store}>
+                <ShoppingCart />
+            </Provider>
+        ).getByTestId
     })
 
     it("should render ShoppingCart correctly", async () => {
