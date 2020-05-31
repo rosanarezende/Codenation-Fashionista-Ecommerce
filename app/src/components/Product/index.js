@@ -1,19 +1,18 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { push } from 'connected-react-router'
 import { routes } from "../../utils/constants"
-
 import { setProductDetail } from '../../actions/products'
-
 import './index.css'
 
 export function Product(props) {
-
-    const { product, goToDetail, setProductDetail } = props
+    const { product } = props
+    const dispatch = useDispatch()
+    const goToDetail = push(routes.detail)
 
     const openProductDetail = async (product) => {
-        await setProductDetail(product)
-        goToDetail()
+        await dispatch(setProductDetail(product))
+        dispatch(goToDetail)
     }
 
     return (
@@ -48,9 +47,4 @@ export function Product(props) {
     )
 }
 
-const mapDispatchToProps = dispatch => ({
-    goToDetail: () => dispatch(push(routes.detail)),
-    setProductDetail: (product) => dispatch(setProductDetail(product))
-})
-
-export default connect(null, mapDispatchToProps)(Product)
+export default Product

@@ -1,25 +1,23 @@
 import React, { useEffect } from 'react'
-import { connect } from 'react-redux'
-
+import { useSelector, useDispatch } from 'react-redux'
 import './index.css'
-
-import { setShoppingCart, setAllItensInShoppingCart, removeProductFromCart, changeQuantity } from '../../actions/shoppingCart'
-
+import { setShoppingCart, setAllItensInShoppingCart } from '../../actions/shoppingCart'
 import ProductInCart from '../../components/ProductInCart'
 import Backdrop from '../../components/Backdrop'
 
 export function ShoppingCart(props) {
-	const { setShoppingCart, allItensInShoppingCart, removeProductFromCart, changeQuantity } = props
+	const allItensInShoppingCart = useSelector(state => state.shoppingCart.allItensInShoppingCart)
+	const dispatch = useDispatch()
 
 	useEffect(() => {
 		const cartContent = JSON.parse(localStorage.getItem('carrinho'))
 		cartContent && setAllItensInShoppingCart(cartContent)
-		
+
 		const stateAsString = JSON.stringify(allItensInShoppingCart)
 		localStorage.setItem('carrinho', stateAsString)
 	}, [allItensInShoppingCart])
 
-	const shoppingCartAppearsDisappears = () => setShoppingCart(false)
+	const shoppingCartAppearsDisappears = () => dispatch(setShoppingCart(false))
 
 	const subtotal = allItensInShoppingCart.reduce((prevVal, product) => {
 		const formattedValue = product.actual_price.toString().substr(3).replace(",", ".")
@@ -44,17 +42,16 @@ export function ShoppingCart(props) {
 
 					<div className="shopping-cart__container">
 						{allItensInShoppingCart.length > 0
-							? allItensInShoppingCart.map((product, index) => (
-								<ProductInCart key={index} product={product}
-									removeProductFromCart={removeProductFromCart}
-									changeQuantity={changeQuantity}
+							? allItensInShoppingCart.map(product => (
+								<ProductInCart
+									key={product.id}
+									product={product}
 								/>
 							))
-							: (
-								<div className="shopping-cart__empty">
-									<h4 className="shopping-cart__empty-text">Sua sacola está vazia :/</h4>
-								</div>
-							)
+							:
+							<div className="shopping-cart__empty">
+								<h4 className="shopping-cart__empty-text">Sua sacola está vazia :/</h4>
+							</div>
 						}
 					</div>
 
@@ -69,15 +66,4 @@ export function ShoppingCart(props) {
 	)
 }
 
-const mapStateToProps = (state) => ({
-	allItensInShoppingCart: state.shoppingCart.allItensInShoppingCart,
-})
-
-const mapDispatchToProps = dispatch => ({
-	setShoppingCart: (appears) => dispatch(setShoppingCart(appears)),
-	setAllItensInShoppingCart: (products) => dispatch(setAllItensInShoppingCart(products)),
-	removeProductFromCart: (productId) => dispatch(removeProductFromCart(productId)),
-	changeQuantity: (information) => dispatch(changeQuantity(information))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(ShoppingCart)
+export default ShoppingCart

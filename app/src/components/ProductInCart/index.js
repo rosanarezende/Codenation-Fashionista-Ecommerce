@@ -1,21 +1,21 @@
 import React from 'react'
-
+import { useDispatch } from 'react-redux'
 import './index.css'
+import { removeProductFromCart, changeQuantity } from '../../actions/shoppingCart'
 import IconButton from '../IconButton'
 
 function ProductInCart(props) {
-	const { product, removeProductFromCart, changeQuantity } = props
+	const { product } = props
+	const dispatch = useDispatch()
 
-	const removeItem = (productId) => {
-		removeProductFromCart(productId)
-	}
-
+	const removeItem = (productId) => dispatch(removeProductFromCart(productId))
+	
 	function onClickRemoveQuantity(productId) {
 		const information = {
 			id: productId,
 			option: "remove"
 		}
-		changeQuantity(information)
+		dispatch(changeQuantity(information))
 	}
 
 	function onClickAddQuantity(productId) {
@@ -23,14 +23,12 @@ function ProductInCart(props) {
 			id: productId,
 			option: "add"
 		}
-		changeQuantity(information)
+		dispatch(changeQuantity(information))
 	}
 
 	return (
 		<div className="product-in-cart" data-testid="product-in-cart">
-
 			<div className="product-in-cart__left">
-
 				<img className="product-in-cart__img"
 					src={product.image
 						? product.image
@@ -38,10 +36,8 @@ function ProductInCart(props) {
 					}
 					alt={product.name}
 				/>
-
 				<p className="product-in-cart__remove" 
 					onClick={() => removeItem(product.id)}>Remover item</p>
-
 			</div>
 
 			<div className="product-in-cart__center">
@@ -73,7 +69,6 @@ function ProductInCart(props) {
 						onClickFunction={onClickAddQuantity}
 					/>
 				</div>
-
 			</div>
 
 			<div className="product-in-cart__right">
