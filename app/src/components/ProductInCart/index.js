@@ -29,13 +29,15 @@ function ProductInCart(props) {
 	return (
 		<div className="product-in-cart" data-testid="product-in-cart">
 			<div className="product-in-cart__left">
-				<img className="product-in-cart__img"
-					src={product.image
-						? product.image
-						: "https://via.placeholder.com/470x594/FFFFFF/?text=Imagem+Indispon%C3%ADvel"
-					}
-					alt={product.name}
-				/>
+				<div className="product-in-cart__img-container">
+					<img className="product-in-cart__img"
+						src={product.image
+							? product.image
+							: "https://via.placeholder.com/470x594/FFFFFF/?text=Imagem+Indispon%C3%ADvel"
+						}
+						alt={product.name}
+					/>
+				</div>
 				<p className="product-in-cart__remove" 
 					onClick={() => removeItem(product.id)}>Remover item</p>
 			</div>

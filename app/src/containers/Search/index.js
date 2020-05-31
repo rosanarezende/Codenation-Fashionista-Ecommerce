@@ -87,7 +87,7 @@ export function Search() {
 				</main>
 
 				<footer className="search__footer">
-					<div className="search__container">
+					<div className="search__container-footer">
 						{filteredItens?.length === 0
 							?
 							<div className="search__empty" data-testid="search-any">
