@@ -1,0 +1,14 @@
+.search__quantity {
+    margin-bottom: 1rem;
+  }
+  
+  .search__empty {
+    display: flex;
+    height: 60vh;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .search__empty-text {
+    color: gray;
+  }
