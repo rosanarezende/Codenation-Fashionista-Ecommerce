@@ -1,16 +1,21 @@
 import React from 'react'
 import { useClick, useInput } from '../../utils/hooks'
-import './index.css'
+import { useDispatch } from 'react-redux'
+import { setSearch } from '../../actions/search'
 import Backdrop from '../../components/Backdrop'
 import SearchInputs from '../../components/SearchInputs'
 import SearchProducts from '../../components/SearchProducts'
-import SearchTop from '../../components/SearchTop'
+import AppearsTop from '../../components/AppearsTop'
+import './index.css'
 
 export function Search() {
 	const [inputSearch, setInputSearch] = useInput("")
 	const [minValue, setMinValue] = useInput("")
 	const [maxValue, setMaxValue] = useInput("")
 	const [sale, setSale] = useClick(false)
+	const dispatch = useDispatch()
+
+    const searchAppearsDisappears = () => dispatch(setSearch(false))
 
 	return (
 		<>
@@ -19,7 +24,10 @@ export function Search() {
 			<div className="search" data-testid="search">
 
 				<header className="search__header">
-					<SearchTop/>
+					<AppearsTop
+						onClickFunction={searchAppearsDisappears}
+						text="Buscar produtos"
+					/>
 				</header>
 
 				<main className="search__main">

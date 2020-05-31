@@ -4,6 +4,7 @@ import './index.css'
 import { setShoppingCart, setAllItensInShoppingCart } from '../../actions/shoppingCart'
 import ProductInCart from '../../components/ProductInCart'
 import Backdrop from '../../components/Backdrop'
+import AppearsTop from '../../components/AppearsTop'
 
 export function ShoppingCart() {
 	const allItensInShoppingCart = useSelector(state => state.shoppingCart?.allItensInShoppingCart)
@@ -30,12 +31,10 @@ export function ShoppingCart() {
 			<div className="shopping-cart" data-testid="shopping-cart">
 
 				<header className="shopping-cart__header">
-					<span className="shopping-cart__icon" onClick={shoppingCartAppearsDisappears}>
-						<i className="fa fa-arrow-right" aria-hidden="true"></i>
-					</span>
-
-					<h4>Sacola ({allItensInShoppingCart?.length}) </h4>
-					<div></div>
+					<AppearsTop
+						onClickFunction={shoppingCartAppearsDisappears}
+						text={`Sacola (${allItensInShoppingCart?.length}) `}
+					/>
 				</header>
 
 				<main className="shopping-cart__main">
