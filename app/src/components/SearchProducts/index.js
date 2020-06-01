@@ -48,6 +48,7 @@ function SearchProducts(props) {
                 <ProductInSearch
                     key={index}
                     product={product}
+                    index={index}
                 />
             ))}
         </div>

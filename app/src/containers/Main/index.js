@@ -25,7 +25,7 @@ export function Main() {
                     :
                     <div className="main__products-grid">
                         {allProducts?.map((product, index) => (
-                            <Product product={product} key={index} />
+                            <Product product={product} index={index} key={index} />
                         ))}
                     </div>
                 }

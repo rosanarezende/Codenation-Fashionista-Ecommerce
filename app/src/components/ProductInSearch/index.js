@@ -6,9 +6,9 @@ import { setProductDetail } from '../../actions/products'
 import { setSearch } from '../../actions/search'
 
 function ProductInSearch(props){
-    const { product } = props
+    const { product, index } = props
     const dispatch = useDispatch()
-    const goToDetail = push(`/detail/${product.name}`)
+    const goToDetail = push(`/produto/${index}`)
 
     const openProductDetail = async (product) => {
         await dispatch(setProductDetail(product))
