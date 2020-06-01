@@ -45,7 +45,7 @@ describe("Search", () => {
 
     it("should render BUTTON correctly", async () => {
         const icon = await getByTestId("icon")
-        expect(icon).toHaveClass("search__icon-link")
+        expect(icon).toHaveClass("icon-link")
 
         // fireEvent.click(icon)
         // gostaria de testar se a store mudou de true para false no appears desapears

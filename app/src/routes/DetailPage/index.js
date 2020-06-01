@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react'
-import { connect } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 import { setSelectedSize } from '../../actions/products'
-import { addProductToCart } from "../../actions/shoppingCart"
 
 import ErrorBoundary from '../../containers/ErrorBoundary'
 import Header from '../../containers/Header';
@@ -11,16 +10,11 @@ import ShoppingCart from '../../containers/ShoppingCart'
 
 import { Detail } from '../../containers/Detail'
 
-export function DetailPage(props) {
-	const {
-		product,
-		shoppingCartAppears,
-		searchAppears,
-		selectedSize,
-		setSelectedSize,
-		addProductToCart,
-		allItensInShoppingCart
-	} = props
+export function DetailPage() {
+	const product = useSelector(state => state.products?.productDetail)
+	const searchAppears = useSelector(state => state.search?.searchAppears)
+	const { shoppingCartAppears, allItensInShoppingCart } = useSelector(state => state.shoppingCart)
+	const dispatch = useDispatch()
 
 	useEffect(() => {
 		const estadoComoString = JSON.stringify(allItensInShoppingCart)
@@ -28,21 +22,14 @@ export function DetailPage(props) {
 	})
 
 	useEffect(() => {
-		return () => setSelectedSize("")
-	}, [setSelectedSize])
+		return () => dispatch(setSelectedSize(""))
+	}, [dispatch])
 
 	return (
 		<ErrorBoundary>
 			<Header />
 
-			{product &&
-				<Detail
-					product={product}
-					selectedSize={selectedSize}
-					setSelectedSize={setSelectedSize}
-					addProductToCart={addProductToCart}
-				/>
-			}
+			{product && <Detail />}
 
 			{shoppingCartAppears &&
 				<ShoppingCart data-testid="shop-appears" />}
@@ -54,20 +41,8 @@ export function DetailPage(props) {
 	)
 }
 
-const mapStateToProps = state => ({
-	product: state.products.productDetail,
-	shoppingCartAppears: state.shoppingCart.shoppingCartAppears,
-	searchAppears: state.search.searchAppears,
-	selectedSize: state.products.selectedSize,
-	allItensInShoppingCart: state.shoppingCart.allItensInShoppingCart,
-})
 
-const mapDispatchToProps = dispatch => ({
-	setSelectedSize: (size) => dispatch(setSelectedSize(size)),
-	addProductToCart: (product) => dispatch(addProductToCart(product))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(DetailPage)
+export default DetailPage
 
 
 // // TESTE
