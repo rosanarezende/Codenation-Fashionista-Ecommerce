@@ -5,7 +5,7 @@ O AceleraDev Frontend React é um programa de formação de profissionais da ár
 
 # Projeto: Fashionista E-commerce
 
-[Site do projeto]()
+:dash: [Deploy da Aplicação](http://fashionista.surge.sh/)
 
 <p align="center">
   <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/rosanarezende/Codenation-Fashionista-Ecommerce">
@@ -120,3 +120,95 @@ Os layouts abaixo servem de referência visual das funcionalidades, sintam-se li
   <img  width='500' src='https://user-images.githubusercontent.com/45580434/79029211-d1cee080-7b69-11ea-91a8-684f78c21bef.png'>
 </p>
 <br>
+
+
+## Como rodar a aplicação
+
+No terminal, clone o projeto:
+
+```
+git clone 
+```
+
+<br>
+
+Entre na pasta do projeto:
+
+```
+cd Codenation-Fashionista-Ecommerce
+```
+
+<br>
+
+Instale as dependências:
+
+```
+npm install
+```
+
+<br>
+
+Execute a aplicação:
+
+```
+npm start 
+```
+
+<br><br>
+
+## Como rodar os testes
+
+No terminal, execute:
+
+```
+npm test
+```
+
+<br><br>
+
+## Contribuição
+
+Contribuições com o projeto são muito aprecidas. Para isso:
+
+- Faça um Fork do projeto
+
+- Crie uma branch para sua feature
+
+```
+git checkout -b feature
+```
+
+- Adicione as mudanças
+```
+git add . 
+```
+
+- _Commit_ as mudanças 
+```
+git commit -m 'Adicionando a feature X'
+```
+
+- Faça o push da branch 
+```
+git push origin feature
+```
+
+- Abra um Pull Request
+
+<br><br>
+
+## Licença
+
+The [MIT License]() (MIT)
+
+Copyright :copyright: 2020 - Fashionista
+
+<br><br>
+
+## Canais de comunicação
+
+**Rosana-Rezende**: *Desenvolvedora web full-stack | Advogada | MBA em gestão: inteligência de negócios digitais - FGV*
+
+- [Linkedin](https://www.linkedin.com/in/rosanarezende/)
+- [Github](https://github.com/rosanarezende)
+- [Email](rezende_rosana@hotmail.com)
