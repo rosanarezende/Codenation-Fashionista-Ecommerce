@@ -1,7 +1,7 @@
 import axios from 'axios'
 const baseUrl = "https://5e9935925eabe7001681c856.mockapi.io/api/v1/catalog"
 
-const setProducts = (products) => ({
+export const setProducts = (products) => ({
     type: "SET_PRODUCTS",
     payload: {
         products

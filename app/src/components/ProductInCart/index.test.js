@@ -3,13 +3,22 @@ import { render } from "@testing-library/react"
 import { products } from "../../utils/mock"
 import ProductInCart  from "./index"
 
+import { Provider } from "react-redux";
+import configureMockStore from "redux-mock-store";
+
+const mockStore = configureMockStore();
+const store = mockStore({});
+
 const mockProduct = {...products[4]}
 
 describe("ProductInCart", () => {
     let getByTestId
     beforeEach(() => {
-        const view = render(<ProductInCart product={mockProduct}/>)
-        getByTestId = view.getByTestId
+        getByTestId = render(
+            <Provider store={store}>
+                <ProductInCart product={mockProduct}/>
+            </Provider>
+        ).getByTestId
     })
     
     it("should render ProductInCart correctly", async () => {

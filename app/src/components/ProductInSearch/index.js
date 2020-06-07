@@ -1,14 +1,19 @@
 import React from 'react'
-
+import { useDispatch } from 'react-redux'
+import { push } from 'connected-react-router'
 import './index.css'
+import { setProductDetail } from '../../actions/products'
+import { setSearch } from '../../actions/search'
 
 function ProductInSearch(props){
-    const { product, setSearch, setProductDetail, goToDetail } = props
-    
+    const { product, index } = props
+    const dispatch = useDispatch()
+    const goToDetail = push(`/produto/${index}`)
+
     const openProductDetail = async (product) => {
-        await setProductDetail(product)
-        goToDetail()
-        setSearch(false)
+        await dispatch(setProductDetail(product))
+        dispatch(goToDetail)
+        dispatch(setSearch(false))
     }
 
     return(
@@ -26,11 +31,11 @@ function ProductInSearch(props){
             </div>
 
             <div className="product-in-search__center">
-                <h3>{product.name.toUpperCase()}</h3>
+                <h5>{product.name.toUpperCase()}</h5>
             </div>
 
             <div className="product-in-search__right">
-                <h3>{product.regular_price}</h3>
+                <h5>{product.actual_price}</h5>
                 <p className="product-in-search__text-grey">
                     {product.installments}
                 </p>

@@ -1,20 +1,21 @@
 import React from 'react'
-
+import { useDispatch } from 'react-redux'
 import './index.css'
+import { removeProductFromCart, changeQuantity } from '../../actions/shoppingCart'
+import IconButton from '../IconButton'
 
 function ProductInCart(props) {
-	const { product, removeProductFromCart, changeQuantity } = props
+	const { product } = props
+	const dispatch = useDispatch()
 
-	const removeItem = (productId) => {
-		removeProductFromCart(productId)
-	}
-
+	const removeItem = (productId) => dispatch(removeProductFromCart(productId))
+	
 	function onClickRemoveQuantity(productId) {
 		const information = {
 			id: productId,
 			option: "remove"
 		}
-		changeQuantity(information)
+		dispatch(changeQuantity(information))
 	}
 
 	function onClickAddQuantity(productId) {
@@ -22,58 +23,58 @@ function ProductInCart(props) {
 			id: productId,
 			option: "add"
 		}
-		changeQuantity(information)
+		dispatch(changeQuantity(information))
 	}
 
 	return (
 		<div className="product-in-cart" data-testid="product-in-cart">
-
 			<div className="product-in-cart__left">
-
-				<img className="product-in-cart__img"
-					src={product.image
-						? product.image
-						: "https://via.placeholder.com/470x594/FFFFFF/?text=Imagem+Indispon%C3%ADvel"
-					}
-					alt={product.name}
-				/>
-
+				<div className="product-in-cart__img-container">
+					<img className="product-in-cart__img"
+						src={product.image
+							? product.image
+							: "https://via.placeholder.com/470x594/FFFFFF/?text=Imagem+Indispon%C3%ADvel"
+						}
+						alt={product.name}
+					/>
+				</div>
 				<p className="product-in-cart__remove" 
 					onClick={() => removeItem(product.id)}>Remover item</p>
-
 			</div>
 
 			<div className="product-in-cart__center">
-				<h4>{product.name.toUpperCase()}</h4>
+				<h5>{product.name.toUpperCase()}</h5>
 				<p className="product-in-cart__text-grey">Tam: {product.size}</p>
 
 				<div className="product-in-cart__quantity-container">
 					{product.quantity === 1
 						?
-						<button className="product-in-cart__button">
-							<i className="fa fa-minus" aria-hidden="true"></i>
-						</button>
+						<IconButton
+							id={product.id}
+							simbol={"minus"}
+						/>
 						:
-						<button className="product-in-cart__button" 
-							onClick={() => onClickRemoveQuantity(product.id)}>
-							<i className="fa fa-minus" aria-hidden="true"></i>
-						</button>
+						<IconButton
+							id={product.id}
+							simbol={"minus"}
+							onClickFunction={onClickRemoveQuantity}
+						/>
 					}
 					
 					<span className="product-in-cart__quantity">
 						{product.quantity}
 					</span>
 					
-					<button className="product-in-cart__button" 
-						onClick={() => onClickAddQuantity(product.id)}>
-						<i className="fa fa-plus" aria-hidden="true"></i>
-					</button>
+					<IconButton
+						id={product.id}
+						simbol={"plus"}
+						onClickFunction={onClickAddQuantity}
+					/>
 				</div>
-
 			</div>
 
 			<div className="product-in-cart__right">
-				<h4>{product.actual_price}</h4>
+				<h5>{product.actual_price}</h5>
 				<p className="product-in-cart__text-grey">
 					{product.installments}
 				</p>

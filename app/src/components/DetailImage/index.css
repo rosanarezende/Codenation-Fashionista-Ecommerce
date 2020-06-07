@@ -1,6 +1,6 @@
 .detail__left{
     /* width: 30vw; */
-    max-height: 75vh;
+    height: 85vh;
     margin-right: 2rem;
     display: flex;
     overflow: hidden;
@@ -11,13 +11,11 @@
     .detail__left{
         margin: auto;
         margin-bottom: 1rem;
-        /* width: 85vw; */
         height: 50vh;
     }
 }
 
 .detail__image{
-    /* width: 100%; */
     height: 100%;
 }
 
