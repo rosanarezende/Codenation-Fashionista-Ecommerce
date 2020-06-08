@@ -156,7 +156,7 @@ Execute a aplicação:
 npm start 
 ```
 
-<br><br>
+<br>
 
 ## Como rodar os testes
 
@@ -166,7 +166,7 @@ No terminal, execute:
 npm test
 ```
 
-<br><br>
+<br>
 
 ## Contribuição
 
@@ -197,7 +197,7 @@ git push origin feature
 
 - Abra um Pull Request
 
-<br><br>
+<br>
 
 ## Licença
 
@@ -205,7 +205,7 @@ The [MIT License]() (MIT)
 
 Copyright :copyright: 2020 - Fashionista
 
-<br><br>
+<br>
 
 ## Canais de comunicação
 
