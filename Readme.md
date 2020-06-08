@@ -38,49 +38,49 @@ Como um profissional front-end, você será responsável por desenvolver as prin
 
 ## Regras
 
-- [ ] Deve implementar as funcionalidades apresentadas nos wireframes / layouts.
+- [x] Deve implementar as funcionalidades apresentadas nos wireframes / layouts.
 
-- [ ] Deve ser mobile first, possuindo uma experiência satisfatória tanto em mobile quanto em desktop.
+- [x] Deve ser mobile first, possuindo uma experiência satisfatória tanto em mobile quanto em desktop.
 
-- [ ] Deve consumir a API do catálogo de produtos.
+- [x] Deve consumir a API do catálogo de produtos.
 
-- [ ] O estado global da aplicação deverá ser gerenciado com Redux
+- [x] O estado global da aplicação deverá ser gerenciado com Redux
 
-- [ ] Deve ser um SPA (Single Page Application).
+- [x] Deve ser um SPA (Single Page Application).
 
-- [ ] Todos os produtos da API devem ser exibidos.
+- [x] Todos os produtos da API devem ser exibidos.
 
-- [ ] Utilize BEM CSS para escrever os estilos.
+- [x] Utilize BEM CSS para escrever os estilos.
 
-- [ ] Deve-se fazer deploy do projeto, servindo-o no Netlify.
+- [x] Deve-se fazer deploy do projeto, servindo-o no Netlify.
 
-- [ ] Não utilize frameworks CSS como Bootstrap, Foundation e afins.
+- [x] Não utilize frameworks CSS como Bootstrap, Foundation e afins.
 
 
 ### Requisitos obrigatórios
 
-- [ ] Para cada item do catálogo de produtos as seguintes informações devem estar na página:
-  - [ ] Imagem
-  - [ ] Nome
-  - [ ] Preço
-  - [ ] Status “Em promoção”
-  - [ ] Preço promocional (se disponível)
-  - [ ] Tamanhos disponíveis
-  - [ ] Selo “Promoção”
+- Para cada item do catálogo de produtos as seguintes informações devem estar na página:
+  - [x] Imagem
+  - [x] Nome
+  - [x] Preço
+  - [x] Status “Em promoção”
+  - [x] Preço promocional (se disponível)
+  - [x] Tamanhos disponíveis
+  - [x] Selo “Promoção”
 
-- [ ] Deve ser possível adicionar itens por tamanho no carrinho de compras.
+- [x] Deve ser possível adicionar itens por tamanho no carrinho de compras.
 
-- [ ] Deve ser possível visualizar os itens adicionados no carrinho de compras, exibindo imagem, nome, preço e quantidade.
+- [x] Deve ser possível visualizar os itens adicionados no carrinho de compras, exibindo imagem, nome, preço e quantidade.
 
-- [ ] Deve ser possível remover itens do carrinho de compras.
+- [x] Deve ser possível remover itens do carrinho de compras.
 
 ### Requisitos opcionais
 
-- [ ] O carrinho de compras deve persistir entre reloads de página.
+- [x] O carrinho de compras deve persistir entre reloads de página.
 
-- [ ] Alguns produtos não tem todos os tamanhos disponíveis, mostre apenas os tamanhos disponíveis em estoque.
+- [x] Alguns produtos não tem todos os tamanhos disponíveis, mostre apenas os tamanhos disponíveis em estoque.
 
-- [ ] Implemente a funcionalidade de busca em tempo real.
+- [x] Implemente a funcionalidade de busca em tempo real.
 
 
 ## Layouts
