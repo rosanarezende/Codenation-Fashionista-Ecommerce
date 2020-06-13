@@ -37,7 +37,8 @@ O AceleraDev Frontend React é um programa de formação de profissionais da ár
 - Redux-Thunk (para integração do redux com requisições assíncronas)
 - React Router (para aplicar múltiplas rotas)
 - Teste unitário, de lógica e de componentes
-- Responsividade e adaptação de aplicação web para front.
+- Responsividade e adaptação de aplicação web para front
+- Git e GitHub para versionamento do código
 
 <br>
 
