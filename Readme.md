@@ -26,15 +26,32 @@ O AceleraDev Frontend React é um programa de formação de profissionais da ár
 </p>
 <br>
 
+## Principais linguagens, tecnologias e ferramentas utilizadas
+
+- HTML
+- CSS (utilização de BEM CSS para construção de estilos) 
+- Javascript
+- Node
+- React (principal biblioteca para construção do site - inclusive uso de Hooks)
+- Redux (para gerenciamento de estados)
+- Redux-Thunk (para integração do redux com requisições assíncronas)
+- React Router (para aplicar múltiplas rotas)
+- Teste unitário, de lógica e de componentes
+- Responsividade e adaptação de aplicação web para front.
+
+<br>
+
 ## Cenário
 Segundo o levantamento, da Webshoppers (Ebit / Nielsen), os e-commerces brasileiros faturaram cerca de R$ 53,2 bilhões em 2018. O segmento “Moda e Acessórios” representa 5,6% do faturamento no varejo online, ocupando a segunda posição entre as categorias de produtos com mais pedidos, perdendo apenas para o segmento de eletroeletrônicos.
 
 Oferecer a melhor experiência aos usuários que interagem com os produtos no desktop, e principalmente em dispositivos móveis, é fundamental para se manter vivo e competitivo nesse segmento.
 
+<br>
 
 ## Objetivo
 Como um profissional front-end, você será responsável por desenvolver as principais funcionalidades de um e-commerce de moda feminina, o Fashionista, garantindo a melhor experiência possível para os usuários interagirem com os produtos.
 
+<br>
 
 ## Regras
 
@@ -82,6 +99,7 @@ Como um profissional front-end, você será responsável por desenvolver as prin
 
 - [x] Implemente a funcionalidade de busca em tempo real.
 
+<br>
 
 ## Layouts
 Os layouts abaixo servem de referência visual das funcionalidades, sintam-se livres para segui-las ou implementá-las com base em outras referências, desde que atenda às regras e aos requisitos obrigatórios.
@@ -121,8 +139,8 @@ Os layouts abaixo servem de referência visual das funcionalidades, sintam-se li
 <p align="center">
   <img  width='500' src='https://user-images.githubusercontent.com/45580434/79029211-d1cee080-7b69-11ea-91a8-684f78c21bef.png'>
 </p>
-<br>
 
+<br>
 
 ## Como rodar a aplicação
 
